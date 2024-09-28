@@ -1,37 +1,37 @@
 .app-container {
-display: flex;
-height: 100vh;
-}
-
-.main-heading {
-    color: black;
+    display: flex;
+    height: 100vh;
 }
 
 .image-container {
-flex: 1;
-background-color: #77074e;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+    flex: 1;
+    background-color: #77074e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.image-heading {
-    color: white;
-    font-size: 52px;
+.main-heading {
+    color: #77074e;
+    font-size: 62px;
+    margin-bottom: 70px;
 }
 
 .login-image {
-width: 100%;
-height: auto;
+    width: 100%;
+    height: auto;
 }
 
 .login-container {
-flex: 1;
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #f4f4f4; /* Different background for the right half */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f4f4f4; 
+    /* margin-bottom: 80px; */
+
 }
 
 .form-background {
@@ -42,6 +42,7 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 text-align: center;
 width: 30%;
 height: 40%;
+/* margin-bottom: 50px; */
 }
 
 .login-heading {
@@ -51,7 +52,7 @@ color: white;
 }
 
 .input-group {
-margin-bottom: 25px;
+margin-bottom: 20px;
 text-align: left;
 color: white;
 margin-right: 10px;

@@ -6,11 +6,11 @@ function Login() {
       <>
         <div className='app-container'>
           <div className='image-container'>
-            <h1 className='image-heading'>HU-SpaceEase</h1>
             <img src="images/audi.jpg" alt="Login Image" className="login-image" />
           </div>
 
           <div className='login-container'>
+          <h1 className='main-heading'>HU-SpaceEase</h1>
             <div className='form-background'>
               <h2 className='login-heading'>Login</h2>
               <form>
