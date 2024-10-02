@@ -1,0 +1,63 @@
+body {
+    background-image: url('images/hu_background2.png'); /* Replace with your image path */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    opacity: 1; /* Full opacity for the body */
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Full height of the viewport */
+    overflow: hidden;
+}
+
+.dashboard-container {
+    padding: 20px;
+    border: 2px solid #77074e; /* Purple border for the container */
+    border-radius: 10px; /* Optional: makes the corners rounded */
+    background-color: #f9f9f9; /* Optional: light background for the container */
+    max-width: 1700px; /* Set a max width for the container */
+    height: 100%;
+    margin: 0 auto; /* Center the container */
+    margin: 5px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns layout */
+    grid-gap: 30px;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.grid-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 180px;
+    height: 120px;
+    transition: transform 0.2s ease-in-out;
+    border: 2px solid #77074e; /* Purple border for each item */
+    display: flex; /* Centering contents */
+    flex-direction: column; /* Stack the image and text vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center the text */
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+}
+
+.icon {
+    width: 80px;
+    height: 75p x;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
