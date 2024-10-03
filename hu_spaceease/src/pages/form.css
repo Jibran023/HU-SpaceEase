@@ -1,0 +1,133 @@
+/* Main container */
+.book-room-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #77074e, #e98ece);
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+/* Header styling */
+.book-room-header {
+    font-size: 2.5em;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Form container */
+.book-room-form {
+    background: #ffffff;
+    border: 2px solid #e98ece;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    width: 50%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.95);
+    animation: grow 0.5s ease-in-out forwards;
+    margin-bottom: 20px;
+}
+
+/* Pre-filled fields */
+.book-room-form input[readonly] {
+    background-color: #f0f0f0;
+    border: 2px solid #e98ece;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Form labels */
+.book-room-form label {
+    font-size: 1.2em;
+    color: #77074e;
+    margin-bottom: 5px;
+    align-self: flex-start;
+}
+
+/* Input and textarea styles */
+.book-room-form input,
+.book-room-form select,
+.book-room-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, transform 0.2s;
+}
+
+/* Focused input effect */
+.book-room-form input:focus,
+.book-room-form select:focus,
+.book-room-form textarea:focus {
+    border-color: #77074e;
+    transform: scale(1.02);
+}
+
+/* Submit button */
+.book-room-form button {
+    background-color: #77074e;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(119, 7, 78, 0.4);
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease;
+}
+
+/* Button hover effect */
+.book-room-form button:hover {
+    background-color: #531351;
+    transform: scale(1.08);
+}
+
+/* Room image styling */
+.room-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.room-image {
+    width: 80%;
+    height: auto;
+    border: 2px solid #77074e;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+/* Ensure the body scrolls when content is larger than the viewport */
+body {
+    overflow-y: scroll;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .book-room-form {
+        width: 90%;
+    }
+
+    .book-room-header {
+        font-size: 2em;
+    }
+}
