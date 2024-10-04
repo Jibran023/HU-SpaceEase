@@ -9,42 +9,42 @@ const RoomBooking = () => {
       type: 'Classroom',
       name: 'Classroom 101',
       description: 'A medium-sized classroom with seating capacity for 40 students.',
-      image: 'https://via.placeholder.com/150', // Replace with your image URL
+      image: './images/audi4.jpg', // Replace with your image URL
     },
     {
       id: 2,
       type: 'Hall',
       name: 'Main Hall',
       description: 'A spacious hall suitable for events and seminars.',
-      image: 'https://via.placeholder.com/150',
+      image: './images/audi4.jpg',
     },
     {
       id: 3,
       type: 'Classroom',
       name: 'Classroom 202',
       description: 'A small classroom perfect for group studies.',
-      image: 'https://via.placeholder.com/150',
+      image: './images/audi4.jpg',
     },
     {
       id: 4,
       type: 'Lab',
       name: 'Computer Lab',
       description: 'Equipped with high-end computers for coding and simulations.',
-      image: 'https://via.placeholder.com/150',
+      image: './images/audi4.jpg',
     },
     {
         id: 5,
         type: 'Lab',
         name: 'Computer Lab',
         description: 'Equipped with high-end computers for coding and simulations.',
-        image: 'https://via.placeholder.com/150',
+        image: './images/audi4.jpg',
       },
       {
         id: 6,
         type: 'Lab',
         name: 'Computer Lab',
         description: 'Equipped with high-end computers for coding and simulations.',
-        image: 'https://via.placeholder.com/150',
+        image: './images/audi4.jpg',
       },
   ];
 
@@ -76,7 +76,7 @@ const RoomBooking = () => {
           <div key={room.id} className="room-item">
             <h3>{room.name}</h3>
             <p>{room.description}</p>
-            <img src={room.image} alt={room.name} className="room-image" />
+            <img src={room.image} alt={room.name} className="room-image"/>
             <div>
               <button className="book-button">Book Now</button>
             </div>
