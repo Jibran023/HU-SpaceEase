@@ -1,0 +1,81 @@
+body{
+    overflow: scroll;
+    /* background-image: 'public\images\hu_background2.png'; */
+    /* background-repeat: repeat; */
+    /* background-size: cover; */
+}
+.room-booking-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  /* .filter-section {
+    margin-bottom: 20px;
+  }
+  
+  .filter-section button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .filter-section button:hover {
+    background-color: #0056b3;
+  } */
+  
+  .filter-section {
+    margin-bottom: 20px;
+  }
+  
+  .filter-section select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .rooms-section {
+    display: grid;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:50px;
+    
+  }
+  
+  .room-item {
+    /* margin: 20px; */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    /* width: 200px; */
+    text-align: center;
+    justify-content: center;
+    display:flex;   
+  }
+  
+  .room-image {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .book-button {
+    /* margin-top: 10px; */
+    /* padding: 10px 15px; */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width:50px;
+    height: 50px;
+    position:relative;
+  }
+  
+  .book-button:hover {
+    background-color: #218838;
+  }
+  

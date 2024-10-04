@@ -13,7 +13,7 @@ function Dashboard() {
 
     const handlebookroom = (e) => {
         e.preventDefault(); // Prevent page reload on form submit
-        navigate('/bookaroom');
+        navigate('/books');
     };
 
     const handlestatus = (e) => {
