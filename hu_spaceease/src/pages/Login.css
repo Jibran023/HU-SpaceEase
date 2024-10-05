@@ -1,118 +1,195 @@
-.app-container {
-    display: flex;
-    height: 100vh;
+/* Body and general styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent scrolling */
 }
 
-.image-container {
-    flex: 1;
-    background-color: #77074e;
+/* Main layout wrapper */
+.login-wrapper {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('images/audi.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensures the image covers the whole background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating */
+}
+
+/* Semi-circle containing the login form */
+.semi-circle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 60%; /* Adjust the height as needed to fit the content */
+    border-radius: 50% 50% 0 0;
+    background-color: #8c125f;
+    display: flex;
+    flex-direction: column; /* Stack the heading and form vertically */
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    padding-bottom: 50px; /* Space from bottom */
+}
+
+/* Login container styling */
+.login-container {
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center; /* Center the text */
 }
 
 .main-heading {
-    color: #77074e;
+    color: #ffffff;
     font-size: 62px;
-    margin-bottom: 70px;
-}
-
-.login-image {
-    width: 100%;
-    height: auto;
-}
-
-.login-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #f4f4f4; 
+    margin-bottom: 20px;
 }
 
 .form-background {
-background-color: #aa0a6f;
-padding: 40px;
-border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-text-align: center;
-width: 30%;
-height: 40%;
-margin-bottom: 100px;
-/* margin-bottom: 50px; */
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
 }
 
 .login-heading {
-margin-bottom: 20px;
-font-size: 36px;
-color: white;
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: #77074e;
 }
 
 .input-group {
-margin-bottom: 20px;
-text-align: left;
-color: white;
-margin-right: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    color: #77074e;
 }
 
 label {
-display: block;
-margin-bottom: 5px;
-font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 input {
-width: 100%;
-padding: 10px;
-border: 1px solid #ccc;
-border-radius: 4px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
-width: 100%;
-padding: 10px;
-background-color: #ffffff;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-font-size: 16px;
-color: black;
-margin-left: 8px;
-margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: #77074e;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    margin-top: 20px;
 }
 
 button:hover {
-background-color: #e98ece;
-color: white;
+    background-color: #e98ece;
+    color: white;
 }
 
-
+/* Navbar styling */
 .navbar2 {
-display: flex;
-justify-content: space-between;
-align-items: center;
-background-color: white;
-padding: 5px 10px;
-border-bottom: 1px solid #ddd; /* Light border to mimic the separation */
-position: sticky; /* Makes the navbar stick to the top */
-top: 0; /* Sticks it to the top of the viewport */
-z-index: 1000; /* Ensures it stays above other content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo-container {
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-logo {
-height: 70px; /* Adjust the height of the logo */
-margin-right: 15px;
+    height: 70px;
+    margin-right: 15px;
 }
 
 .navbar-title {
-font-size: 24px;
-font-weight: bold;
-color: #5a205a; /* Purple color for title text */
+    font-size: 24px;
+    font-weight: bold;
+    color: #5a205a;
+}
+
+/* Media Queries for responsiveness */
+
+/* For tablet-sized devices (768px and below) */
+@media (max-width: 768px) {
+    .semi-circle {
+        height: 70%; /* Increase the height of the semi-circle to fit content */
+        padding-bottom: 30px;
+    }
+
+    .main-heading {
+        font-size: 48px; /* Reduce the heading size */
+    }
+
+    .login-container {
+        width: 70%; /* Reduce the width of the login container */
+    }
+
+    .form-background {
+        padding: 30px; /* Reduce padding */
+    }
+
+    .login-heading {
+        font-size: 28px; /* Reduce the login heading font size */
+    }
+
+    input, button {
+        padding: 8px; /* Slightly reduce input/button padding */
+    }
+}
+
+/* For mobile devices (below 480px) */
+@media (max-width: 480px) {
+    .semi-circle {
+        height: 80%; /* Further increase the height for mobile */
+        padding-bottom: 20px;
+    }
+
+    .main-heading {
+        font-size: 36px; /* Further reduce heading size */
+        margin-bottom: 20px;
+    }
+
+    .login-container {
+        width: 85%; /* Narrower container */
+    }
+
+    .form-background {
+        padding: 20px; /* Smaller padding */
+    }
+
+    .login-heading {
+        font-size: 24px; /* Smaller login heading */
+    }
+
+    input, button {
+        padding: 6px; /* Reduce input/button padding */
+        font-size: 14px; /* Slightly smaller text for inputs and button */
+    }
 }
