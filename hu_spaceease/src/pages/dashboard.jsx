@@ -1,28 +1,27 @@
 import React from 'react';
-import './Dashboard.css'; // You can define your custom styles here
+import './Dashboard.css'; 
 import { useNavigate } from 'react-router-dom';
-import Navbar from './navbar2'; // Import the Navbar component
-
+import Navbar from './navbar2'; 
 function Dashboard() {
-    const navigate = useNavigate(); // Get the navigation function
+    const navigate = useNavigate(); 
 
     const handleviewroom = (e) => {
-        e.preventDefault(); // Prevent page reload on form submit
+        e.preventDefault(); 
         navigate('/viewrooms');
     };
 
     const handlebookroom = (e) => {
-        e.preventDefault(); // Prevent page reload on form submit
+        e.preventDefault(); 
         navigate('/books');
     };
 
     const handlestatus = (e) => {
-        e.preventDefault(); // Prevent page reload on form submit
+        e.preventDefault(); 
         navigate('/viewstatus');
     };
 
     const handleMap = (e) => {
-        e.preventDefault(); // Prevent page reload on form submit
+        e.preventDefault(); 
         navigate('/HUmap');
     };
     

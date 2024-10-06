@@ -4,14 +4,13 @@ import Navbar from './navbar2';
 import './books.css';
 
 const RoomBooking = () => {
-  // Sample data for rooms
   const rooms = [
     {
       id: 1,
       type: 'Classroom',
       name: 'Classroom 101',
       description: 'A medium-sized classroom with seating capacity for 40 students.',
-      image: './images/audi4.jpg', // Replace with your image URL
+      image: './images/audi4.jpg',
     },
     {
       id: 2,
@@ -52,18 +51,15 @@ const RoomBooking = () => {
 
   const [filter, setFilter] = useState('All');
 
-  // Function to handle filter change
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
 
-  // Filter rooms based on the selected type
   const filteredRooms = filter === 'All' ? rooms : rooms.filter(room => room.type === filter);
 
   return (
     <div className="room-booking-container">
       <Navbar/>
-      {/* Filter Section */}
       <div className="filter-section">
         <select onChange={handleFilterChange} value={filter}>
           <option value="All">Enter Type</option>
@@ -73,7 +69,6 @@ const RoomBooking = () => {
         </select>
       </div>
 
-      {/* Rooms Display Section */}
       <div className="rooms-section">
         {filteredRooms.map(room => (
           <div key={room.id} className="room-item">

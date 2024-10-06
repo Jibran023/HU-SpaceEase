@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './form.css'; // Ensure this CSS file is linked
 
 function Bookroom() {
-    // Simulate fetching user data from login (this could come from context or props in a real app)
     const [userData, setUserData] = useState({
         name: "John Doe",
         studentID: "123456789",
         batch: "2023",
-        room: "Library" // This should come from homepage or room selection logic
+        room: "Library" 
     });
 
     const [startDate, setStartDate] = useState('');
@@ -18,7 +17,6 @@ function Bookroom() {
     const [acceptedAdminRights, setAcceptedAdminRights] = useState(false);
     const [error, setError] = useState('');
 
-    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!startDate || !endDate || !time || !reason || !acceptedTerms || !acceptedAdminRights) {
@@ -27,12 +25,10 @@ function Bookroom() {
             setError('Start date cannot be later than the end date.');
         } else {
             setError('');
-            // Process form submission here
             console.log('Booking details:', { ...userData, startDate, endDate, time, reason });
         }
     };
 
-    // Room images based on room selection
     const roomImages = {
         Library: 'C:\\Users\\USER\\OneDrive\\Desktop\\semester 5\\HU-SpaceEase\\hu_spaceease\\public\\images\\audi.jpg',
         Auditorium: 'C:\\Users\\USER\\OneDrive\\Desktop\\semester 5\\HU-SpaceEase\\hu_spaceease\\public\\images\\audi.jpg',
@@ -43,9 +39,7 @@ function Bookroom() {
         <div className="book-room-container">
             <h1 className="book-room-header">Book a Room</h1>
 
-            {/* Form for booking */}
             <form className="book-room-form" onSubmit={handleSubmit}>
-                {/* Name Field (Pre-filled, uneditable) */}
                 <label htmlFor="name">Your Name</label>
                 <input
                     type="text"
@@ -54,7 +48,6 @@ function Bookroom() {
                     readOnly
                 />
 
-                {/* Batch Number Field (Pre-filled, uneditable) */}
                 <label htmlFor="batchNumber">Batch Number</label>
                 <input
                     type="text"
@@ -63,7 +56,6 @@ function Bookroom() {
                     readOnly
                 />
 
-                {/* User ID (Pre-filled, uneditable) */}
                 <label htmlFor="userID">Student ID</label>
                 <input
                     type="text"
@@ -72,7 +64,6 @@ function Bookroom() {
                     readOnly
                 />
 
-                {/* Room Name (Pre-filled, uneditable) */}
                 <label htmlFor="room">Room Name</label>
                 <input
                     type="text"
@@ -81,7 +72,6 @@ function Bookroom() {
                     readOnly
                 />
 
-                {/* Start and End Dates */}
                 <label htmlFor="startDate">Start Date</label>
                 <input
                     type="date"
@@ -98,7 +88,6 @@ function Bookroom() {
                     onChange={(e) => setEndDate(e.target.value)}
                 />
 
-                {/* Booking Time */}
                 <label htmlFor="time">Booking Time</label>
                 <input
                     type="time"
@@ -107,7 +96,6 @@ function Bookroom() {
                     onChange={(e) => setTime(e.target.value)}
                 />
 
-                {/* Reason for Booking */}
                 <label htmlFor="reason">Reason for Booking</label>
                 <textarea
                     id="reason"
@@ -116,7 +104,6 @@ function Bookroom() {
                     placeholder="Enter the reason for booking"
                 ></textarea>
 
-                {/* Terms and Conditions */}
                 <div className="checkbox-group">
                     <input
                         type="checkbox"
@@ -141,14 +128,11 @@ function Bookroom() {
                     </label>
                 </div>
 
-                {/* Error Message */}
                 {error && <p className="error-message">{error}</p>}
 
-                {/* Submit Button */}
                 <button type="submit">Submit Booking</button>
             </form>
 
-            {/* Display Room Image */}
             {userData.room && (
                 <div className="room-image-container">
                     <img
