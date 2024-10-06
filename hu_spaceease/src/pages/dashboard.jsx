@@ -48,6 +48,12 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
+            <div className="footer-bar">
+                <div className="footer-content">
+                    <a href="mailto:servicedesk@habib.edu.pk" className="footer-link">servicedesk@habib.edu.pk</a>
+                    <a href="https://habibuniversity.sharepoint.com/sites/Student/application-handbook" className="footer-link">Application Handbook</a>
+                </div>
+            </div>
         </>
     );
 }
