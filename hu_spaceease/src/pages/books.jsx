@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './navbar2';
+import { useNavigate } from 'react-router-dom';
 
 import './books.css';
 
@@ -34,20 +35,25 @@ const RoomBooking = () => {
       image: './images/audi4.jpg',
     },
     {
-        id: 5,
-        type: 'Lab',
-        name: 'Computer Lab',
-        description: 'Equipped with high-end computers for coding and simulations.',
-        image: './images/audi4.jpg',
-      },
-      {
-        id: 6,
-        type: 'Lab',
-        name: 'Computer Lab',
-        description: 'Equipped with high-end computers for coding and simulations.',
-        image: './images/audi4.jpg',
-      },
+      id: 5,
+      type: 'Lab',
+      name: 'Computer Lab',
+      description: 'Equipped with high-end computers for coding and simulations.',
+      image: './images/audi4.jpg',
+    },
+    {
+      id: 6,
+      type: 'Lab',
+      name: 'Computer Lab',
+      description: 'Equipped with high-end computers for coding and simulations.',
+      image: './images/audi4.jpg',
+    },
   ];
+  const navigate = useNavigate(); 
+
+  const navigate_to_status = () => {
+    navigate('./form');
+  };
 
   const [filter, setFilter] = useState('All');
 
@@ -79,7 +85,7 @@ const RoomBooking = () => {
             </div>
            
             <div className="Button-div">
-              <button className="book-button">Book Now</button>
+              <button className="book-button" onClick={navigate_to_status}>Book Now</button>
           </div>
           </div>
         ))}
