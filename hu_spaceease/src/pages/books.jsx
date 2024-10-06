@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Navbar from './navbar2';
+
 import './books.css';
 
 const RoomBooking = () => {
@@ -60,6 +62,7 @@ const RoomBooking = () => {
 
   return (
     <div className="room-booking-container">
+      <Navbar/>
       {/* Filter Section */}
       <div className="filter-section">
         <select onChange={handleFilterChange} value={filter}>
@@ -74,12 +77,15 @@ const RoomBooking = () => {
       <div className="rooms-section">
         {filteredRooms.map(room => (
           <div key={room.id} className="room-item">
+            <div className="Details">
             <h3>{room.name}</h3>
-            <p>{room.description}</p>
+            <p className="description-para">{room.description}</p>
             <img src={room.image} alt={room.name} className="room-image"/>
-            <div>
-              <button className="book-button">Book Now</button>
             </div>
+           
+            <div className="Button-div">
+              <button className="book-button">Book Now</button>
+          </div>
           </div>
         ))}
       </div>

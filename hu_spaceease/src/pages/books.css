@@ -1,3 +1,9 @@
+
+
+h3{
+  margin:0 auto;
+  padding:0px;
+}
 body{
     overflow: scroll;
     /* background-image: 'public\images\hu_background2.png'; */
@@ -46,6 +52,7 @@ body{
   }
   
   .room-item {
+
     /* margin: 20px; */
     padding: 20px;
     border: 1px solid #ddd;
@@ -53,9 +60,21 @@ body{
     /* width: 200px; */
     text-align: center;
     justify-content: center;
-    display:flex;   
+    display:grid;   
   }
   
+  .Details{
+    gap:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .description-para{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+  }
   .room-image {
     width: 150px;
     height: 100px;
@@ -63,7 +82,11 @@ body{
     border-radius: 5px;
     
   }
-  
+  .Button-div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
   .book-button {
     /* margin-top: 10px; */
     /* padding: 10px 15px; */
@@ -71,7 +94,7 @@ body{
     color: white;
     border: none;
     cursor: pointer;
-    width:50px;
+    width:150px;
     height: 50px;
     position:relative;
   }
