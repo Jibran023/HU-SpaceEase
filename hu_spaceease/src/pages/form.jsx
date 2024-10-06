@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import './form.css'; // Ensure this CSS file is linked
+import React, { useState } from 'react';
+import './form.css'; 
 
-function Bookroom() {
+function FormRoom() {
     const [userData, setUserData] = useState({
         name: "John Doe",
         studentID: "123456789",
@@ -30,9 +30,9 @@ function Bookroom() {
     };
 
     const roomImages = {
-        Library: 'C:\\Users\\USER\\OneDrive\\Desktop\\semester 5\\HU-SpaceEase\\hu_spaceease\\public\\images\\audi.jpg',
-        Auditorium: 'C:\\Users\\USER\\OneDrive\\Desktop\\semester 5\\HU-SpaceEase\\hu_spaceease\\public\\images\\audi.jpg',
-        "Classroom A": 'C:\\Users\\USER\\OneDrive\\Desktop\\semester 5\\HU-SpaceEase\\hu_spaceease\\public\\images\\audi.jpg'
+        Library: 'public\\images\\audi.jpg',
+        Auditorium: 'public\\images\\audi.jpg',
+        "Classroom A": 'public\\images\\audi.jpg'
     };
 
     return (
@@ -146,4 +146,4 @@ function Bookroom() {
     );
 }
 
-export default Bookroom;
+export default FormRoom;

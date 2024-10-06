@@ -7,7 +7,7 @@ import './Navbar.css';
 
 function Navbar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const navigate = useNavigate(); // Get the navigation function
+    const navigate = useNavigate(); 
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);

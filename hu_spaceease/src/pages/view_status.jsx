@@ -1,5 +1,5 @@
 import React from 'react';
-import './view_status.css'; // You can define your custom styles here
+import './view_status.css'; 
 
 function Viewstatus() {
     return (

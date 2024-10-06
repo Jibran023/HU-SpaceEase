@@ -51,8 +51,9 @@ const RoomBooking = () => {
   ];
   const navigate = useNavigate(); 
 
-  const navigate_to_status = () => {
-    navigate('./form');
+  const navigate_to_status = (e) => {
+    e.preventDefault(); 
+    navigate('/forms');
   };
 
   const [filter, setFilter] = useState('All');
@@ -85,7 +86,7 @@ const RoomBooking = () => {
             </div>
            
             <div className="Button-div">
-              <button className="book-button" onClick={navigate_to_status}>Book Now</button>
+              <button className="book-button" onClick={navigate_to_status}>Book Now!</button>
           </div>
           </div>
         ))}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './hu_map.css'; // You can define your custom styles here
+import './hu_map.css'; 
 
 function HUmap() {
     return (

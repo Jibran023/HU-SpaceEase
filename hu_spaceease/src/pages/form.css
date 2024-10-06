@@ -116,7 +116,6 @@
     margin-bottom: 10px;
 }
 
-/* Ensure the body scrolls when content is larger than the viewport */
 body {
     overflow-y: scroll;
 }

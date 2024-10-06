@@ -1,5 +1,5 @@
 import React from 'react';
-import './view_rooms.css'; // You can define your custom styles here
+import './view_rooms.css';
 
 function Viewrooms() {
     return (

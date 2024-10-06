@@ -7,6 +7,7 @@ import Viewrooms from './pages/view_rooms.jsx';
 import Viewstatus from './pages/view_status.jsx';
 import HUmap from './pages/hu_map.jsx';
 import RoomBooking from './pages/books.jsx'
+import FormRoom from './pages/form.jsx';
 import './App.css'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/viewrooms" element={<Viewrooms />} />
           <Route path="/viewstatus" element={<Viewstatus />} />
           <Route path="/HUmap" element={<HUmap />} />
+          <Route path="/forms" element={<FormRoom />} />
 
         </Routes>
       </Router>
