@@ -193,3 +193,91 @@ button:hover {
         font-size: 14px; /* Slightly smaller text for inputs and button */
     }
 }
+
+
+
+/* new code */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  .login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out; /* Smooth image transition */
+  }
+  
+  /* Fade-in and Fade-out classes */
+  .fade-in {
+    opacity: 1;
+    transition: opacity 1s ease-in; /* 1-second fade-in */
+  }
+  
+  .fade-out {
+    opacity: 0.5;
+    transition: opacity 1s ease-out; /* 1-second fade-out */
+  }
+  
+  .semi-circle {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    border-radius: 50% 50% 0 0;
+    width: 500px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-container {
+    text-align: center;
+  }
+  
+  .main-heading {
+    margin-bottom: 20px;
+  }
+  
+  .form-background {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #005bb5;
+  }
+  
