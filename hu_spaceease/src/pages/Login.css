@@ -13,20 +13,40 @@
 }
 
 
+
+
 .semi-circle {
     position: absolute;
-    bottom: 0; /* Increase the bottom value to move it upwards */
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 50% 50% 0 0;
-    background-color: #8c125f;
+    background: linear-gradient(135deg, #8c125f, #f08cc6); /* applying a diagonal gradient background, starting with a darker purple to a lighter pink color */
     display: flex;
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
-    padding-bottom: 50px; 
+    padding-bottom: 50px; /* adding space at the bottom inside the semi-circle */
     width: 600px;
     height: 500px;
+    box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.2); /* adding a shadow beneath the semi-circle for depth and 3D effect */
+    animation: pulse 5s infinite ease-in-out; /* we apply the pulse animation: it lasts 5 seconds which repeats infinitel and smoothly transitions in and out */
+}
+
+/* Create a smooth pulsing animation */
+@keyframes pulse { /* we use this to define the steps of the animation which will help in showing how the element will change at different stages of the animation cycle */
+    0% {
+        transform: translateX(-50%) scale(1); /* at the start of the animation, the semi-circle is at its normal scale */
+        background: linear-gradient(135deg, #8c125f, #f08cc6); /* this is the background then */
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);/* At the midpoint of the animation, the semi-circle will grow slightly larger by scaling up by 5%, we go from 1.00 to 1.05 */
+        background: linear-gradient(135deg, #f08cc6, #8c125f); /* we reverse the colors */
+    }
+    100% {
+        transform: translateX(-50%) scale(1); /* when we go back to original size */
+        background: linear-gradient(135deg, #8c125f, #f08cc6); /* we return back to original color */
+    }
 }
 
 .main-heading {
