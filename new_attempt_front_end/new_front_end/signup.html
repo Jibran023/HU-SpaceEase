@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HU-SPACEEASE - Sign Up</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Main signup page styles */
+        body {
+            background-image: linear-gradient(135deg, #6e44ff 0%, #4a00e0 50%, #000000 100%);
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .signup-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            width: 400px;
+            text-align: center;
+        }
+
+        .signup-container h2 {
+            color: #b19cd9;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .signup-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        .form-control::placeholder {
+            color: #b19cd9;
+        }
+
+        .btn-primary {
+            background-image: linear-gradient(135deg, #b19cd9 0%, #6e44ff 100%);
+            border: none;
+            padding: 10px 40px;
+            border-radius: 50px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.5s ease;
+        }
+
+        .btn-primary:hover {
+            background-image: linear-gradient(135deg, #4a00e0 0%, #000000 100%);
+        }
+
+        .form-links {
+            margin-top: 15px;
+        }
+
+        .form-links a {
+            color: #b19cd9;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .form-links a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create an Account</h2>
+        <form action="login.html" method="POST">
+            <input type="text" class="form-control" placeholder="Full Name" required>
+            <input type="email" class="form-control" placeholder="Email" required>
+            <input type="password" class="form-control" placeholder="Password" required>
+            <input type="password" class="form-control" placeholder="Confirm Password" required>
+            <button type="submit" class="btn btn-primary"> <a  href="login.html">Sign Up</a> </button>
+
+        </form>
+        <div class="form-links">
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+        <button type="button" onclick="window.location.href='index.html';" class="btn btn-primary">Return to Home</button>
+    </div>
+</body>
+</html>
