@@ -17,7 +17,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white; /* Set navbar background to white */
+  background: rgba(255, 255, 255, 0.8); /* Slightly transparent white to blend with background */
   color: #4e00c2; /* Color that aligns with theme */
   font-weight: bold;
   font-size: 1.2em; /* Increase font size */
@@ -31,15 +31,20 @@ body {
 }
 
 .nav-button {
-  background: none;
-  border: none;
-  color: #4e00c2;
+  background: white; /* Button background remains white */
+  border: 1px solid #4e00c2; /* Optional: add border to buttons */
+  color: #4e00c2; /* Button text color */
   font-weight: bold;
   cursor: pointer;
+  padding: 10px 15px; /* Padding for buttons */
+  border-radius: 5px; /* Rounded corners for buttons */
+  width: 120px; /* Smaller button width */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
 .nav-button:hover {
-  text-decoration: underline;
+  background-color: #4e00c2; /* Change background on hover */
+  color: white; /* Change text color on hover */
 }
 
 .filter-section {
@@ -64,7 +69,7 @@ body {
 
 .room-item {
   width: 100%; /* Full-width for larger room cards */
-  max-width: 700px; /* Increased maximum width */
+  max-width: 900px; /* Increased maximum width */
   padding: 30px;
   border: 1px solid #ddd;
   border-radius: 10px;

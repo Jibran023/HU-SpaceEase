@@ -30,10 +30,10 @@ function Dashboard() {
 
     // Slideshow feature
     const images = [
-        // 'images/audi.jpg',
-        // 'images/audi3.jpg',
-        // 'images/audi4.jpg',
-        'images/dashboardimage.PNG'
+        'images/audi.jpg',
+        'images/audi3.jpg',
+        'images/audi4.jpg',
+        // 'images/dashboardimage.PNG'
     ];
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -52,27 +52,14 @@ function Dashboard() {
             <div className="title-banner">
                 HU-SpaceEase
             </div>
-            
-            <div className="dashboard-container">
-                <div className="grid-container">
-                    <div className="grid-item" onClick={handlebookroom}>
-                        <img src="images/door.png" alt="Rooms" className="icon" />
-                        <p>Book a Room</p>
-                    </div>
-                    <div className="grid-item" onClick={handleviewroom}>
-                        <img src="images/my_rooms.png" alt="Rooms1" className="icon" />
-                        <p>View all Rooms</p>
-                    </div>
-                    <div className="grid-item" onClick={handlestatus}>
-                        <img src="images/status.png" alt="Status" className="icon" />
-                        <p>View Status</p>
-                    </div>
-                    <div className="grid-item" onClick={handleMap}>
-                        <img src="images/map_logo.jpg" alt="Map" className="icon" />
-                        <p>HU-Map</p>
-                    </div>
-                </div>
+            <div className="slideshow-container">
+                <img 
+                    src={images[currentImageIndex]} 
+                    alt="Slideshow" 
+                    className="slideshow-image" 
+                />
             </div>
+            
             <RoomCards/>
             <ServicesSection />
             <div className="footer-bar">

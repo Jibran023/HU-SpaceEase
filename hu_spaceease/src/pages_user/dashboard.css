@@ -122,3 +122,20 @@ p {
     box-sizing: border-box;
     margin: 0 auto;
 }
+
+.slideshow-container {
+    width: 100%; /* Full width */
+    height: 50vh; /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.slideshow-image {
+    width: 100%; /* Full width of container */
+    height: 100%; /* Full height of container */
+    object-fit: cover; /* Ensure image covers the container */
+    transition: opacity 1s ease-in-out; /* Smooth transition effect */
+}
