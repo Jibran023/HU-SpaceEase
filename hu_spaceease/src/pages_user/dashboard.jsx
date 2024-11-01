@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Dashboard.css'; 
-
 import { useNavigate } from 'react-router-dom';
 import Navbar from './navbar2'; 
+import ServicesSection from './services_section';
+import RoomCards from './few_rooms_dashboard';
 
 function Dashboard() {
     const navigate = useNavigate(); 
@@ -26,10 +27,32 @@ function Dashboard() {
         e.preventDefault(); 
         navigate('/HUmap');
     };
+
+    // Slideshow feature
+    const images = [
+        // 'images/audi.jpg',
+        // 'images/audi3.jpg',
+        // 'images/audi4.jpg',
+        'images/dashboardimage.PNG'
+    ];
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 3000); // Change image every 3 seconds
+
+        return () => clearInterval(interval); // Cleanup interval on component unmount
+    }, [images.length]);
+
     
     return (
         <>
             <Navbar /> 
+            <div className="title-banner">
+                HU-SpaceEase
+            </div>
+            
             <div className="dashboard-container">
                 <div className="grid-container">
                     <div className="grid-item" onClick={handlebookroom}>
@@ -50,6 +73,8 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
+            <RoomCards/>
+            <ServicesSection />
             <div className="footer-bar">
                 <div className="footer-content">
                     <a href="mailto:servicedesk@habib.edu.pk" className="footer-link">servicedesk@habib.edu.pk</a>

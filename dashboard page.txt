@@ -1,0 +1,170 @@
+import React from 'react';
+import './Dashboard.css'; 
+
+import { useNavigate } from 'react-router-dom';
+import Navbar from './navbar2'; 
+
+function Dashboard() {
+    const navigate = useNavigate(); 
+
+    const handlebookroom = (e) => {
+        e.preventDefault(); 
+        navigate('/books');
+    };
+
+    const handlestatus = (e) => {
+        e.preventDefault(); 
+        navigate('/viewstatus');
+    };
+
+    const handleMap = (e) => {
+        e.preventDefault(); 
+        navigate('/HUmap');
+    };
+
+    const handleAbout = (e) => {
+        e.preventDefault(); 
+        navigate('/About');
+    };
+    
+    return (
+        <>
+            <Navbar /> 
+            <div className="dashboard-container">
+                <div className="grid-container">
+                    <div className="grid-item" onClick={handlebookroom}>
+                        <img src="images/door.png" alt="Rooms" className="icon" />
+                        <p>Book a Room</p>
+                    </div>
+                    <div className="grid-item" onClick={handleAbout}>
+                        <img src="images/my_rooms.png" alt="Rooms1" className="icon" />
+                        <p>About</p>
+                    </div>
+                    <div className="grid-item" onClick={handlestatus}>
+                        <img src="images/status.png" alt="Status" className="icon" />
+                        <p>View Status</p>
+                    </div>
+                    <div className="grid-item" onClick={handleMap}>
+                        <img src="images/map_logo.jpg" alt="Map" className="icon" />
+                        <p>HU-Map</p>
+                    </div>
+                </div>
+            </div>
+            <div className="footer-bar">
+                <div className="footer-content">
+                    <a href="mailto:servicedesk@habib.edu.pk" className="footer-link">servicedesk@habib.edu.pk</a>
+                    <a href="https://habibuniversity.sharepoint.com/sites/Student/application-handbook" className="footer-link">Application Handbook</a>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export default Dashboard;
+
+
+
+css: 
+.dashboard-container {
+    padding: 20px;
+    border: 2px solid #77074e; /* Purple border for the container */
+    border-radius: 10px; /* Optional: makes the corners rounded */
+    background-color: #f9f9f9; /* Optional: light background for the container */
+    /* max-width: 1700px; Set a max width for the container */
+    height: 100%;
+    margin: 0 auto; /* Center the container */
+    margin: 5px;
+    /* width: 100%; */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns layout */
+    grid-gap: 30px;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.grid-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 180px;
+    height: 120px;
+    transition: transform 0.2s ease-in-out;
+    border: 2px solid #77074e; /* Purple border for each item */
+    display: flex; /* Centering contents */
+    flex-direction: column; /* Stack the image and text vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center the text */
+}
+
+.about-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 180px;
+    height: 120px;
+    transition: transform 0.2s ease-in-out;
+    border: 2px solid #77074e; /* Purple border for each item */
+    display: flex; /* Centering contents */
+    flex-direction: column; /* Stack the image and text vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center the text */
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+}
+
+.icon {
+    width: 80px;
+    height: 75p x;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+.footer-bar {
+    background-color: #f9f9f9; /* Light background for the footer */
+    border-top: 2px solid #77074e; /* Purple border similar to the rest */
+    /* width: auto; Adjust width based on content */
+    /* max-width: 1700px; Same max-width as .dashboard-container */
+    border-radius: 10px; /* Rounded corners */
+    position: fixed; /* Stick to the bottom */
+    bottom: 10px; /* Margin from the bottom */
+    left: 10px; /* Margin from the left */
+    right: 10px; /* Margin from the right */
+    padding: 10px; /* Padding for the footer content */
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for a 3D effect */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center; /* Center the content */
+    align-items: center;
+    gap: 50px; /* Space between the two links */
+}
+
+.footer-link {
+    color: #77074e; /* Purple text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}

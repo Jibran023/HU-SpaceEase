@@ -1,0 +1,112 @@
+body {
+  overflow: scroll;
+  background: linear-gradient(135deg, #4e00c2, #77074e, #9a0aff);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+
+.room-booking-container {
+  text-align: center;
+  margin: 20px;
+  padding-top: 70px; /* Adjusted for navbar height */
+}
+
+/* Simple Navbar */
+.simple-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white; /* Set navbar background to white */
+  color: #4e00c2; /* Color that aligns with theme */
+  font-weight: bold;
+  font-size: 1.2em; /* Increase font size */
+  padding: 15px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #4e00c2;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  text-decoration: underline;
+}
+
+.filter-section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.filter-section select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.rooms-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+.room-item {
+  width: 100%; /* Full-width for larger room cards */
+  max-width: 700px; /* Increased maximum width */
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.Details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.description-para {
+  margin: 0;
+  text-align: center;
+  font-size: 1em;
+}
+
+.room-image {
+  width: 200px; /* Increased image size */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.Button-div {
+  display: flex;
+  justify-content: center;
+}
+
+.book-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.book-button:hover {
+  background-color: #218838;
+}

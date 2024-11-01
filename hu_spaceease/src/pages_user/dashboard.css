@@ -1,0 +1,124 @@
+.dashboard-container {
+    padding: 20px;
+    border: 2px solid #77074e;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4e00c2, #77074e, #9a0aff);
+    color: white;
+    width: 100%; /* Use 100% instead of 100vw */
+    height: 100%;
+    margin: 0 auto; /* Center the container */
+    box-sizing: border-box;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.banner-container {
+    width: 100%; /* Full width without overflow */
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+.banner-image-active {
+    opacity: 1;
+}
+
+.grid-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 180px;
+    height: 120px;
+    transition: transform 0.2s ease-in-out;
+    border: 2px solid #77074e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+}
+
+.icon {
+    width: 80px;
+    height: 75px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+.footer-bar {
+    background-color: #5e007a;
+    border-top: 2px solid #77074e;
+    width: 100%; /* Full width without overlapping the scrollbar */
+    max-width: 100%; /* Ensures it stays within the viewport width */
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Include padding in width calculation */
+    position: static; /* Footer appears only at the bottom of the page content */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+
+
+.title-banner {
+    width: 100%; /* Full width */
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4e00c2, #77074e, #9a0aff);
+    color: white;
+    font-size: 4em;
+    font-weight: bold;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
