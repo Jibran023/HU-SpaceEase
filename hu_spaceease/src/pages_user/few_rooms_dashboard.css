@@ -1,0 +1,53 @@
+/* RoomCards.css */
+.room-cards-container {
+    text-align: center;
+    margin: 20px;
+    background-color: #f8f9fa; /* Light whitish background */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.featured-title {
+    font-weight: bold;
+    color: #4e00c2; /* Color that goes well with background */
+}
+
+.room-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap between cards */
+    padding: 20px;
+}
+
+.room-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px; /* Width of each card */
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Margin between cards */
+}
+
+.room-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.view-more-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px; /* Margin above the button */
+}
+
+.view-more-button:hover {
+    background-color: #218838;
+}
