@@ -1,0 +1,46 @@
+import express from 'express';
+const router = express.Router()
+import User from '../models/user.js'
+//getting all the users
+router.get('/', async(req, res)=>{
+try{
+const users=await User.find()
+res.json(users)
+}
+catch(err){
+    res.status(500).json({message:err.message})
+}
+})
+//getting one
+router.get('/:id', (req, res)=>{
+res.send(req.params.id)
+})
+
+//creating one 
+router.post('/:user_id', async (req, res) => {
+    // Destructure the request body
+    const { email, password, role, name, department, position } = req.body;
+    
+    // Create a new user instance
+    const user = new User({
+        user_id: req.params.user_id, // Get user_id from the URL parameter
+        email,
+        password, // Ensure to hash this password before saving it in production
+        role,
+        name,
+        department,
+        position,
+    });
+
+    try {
+        // Save the new user to the database
+        const savedUser = await user.save();
+        res.status(201).json(savedUser); // Respond with the created user and a 201 status
+    } catch (error) {
+        // Handle validation errors or other issues
+        res.status(400).json({ message: error.message });
+    }
+});
+
+// Export the router to use in your main application file
+export default router;
