@@ -32,6 +32,16 @@ function Login() {
     navigate('/dashboard');
   };
 
+  const handleSignup = (e) => {
+    e.preventDefault();
+    navigate('/signup');
+  };
+
+  const handleAdminPage = (e) => {
+    e.preventDefault();
+    navigate('/adminlogin'); // Navigate to the admin login page
+  };
+
   return (
     <>
       <div
@@ -54,6 +64,12 @@ function Login() {
                 </div>
                 <button type='submit'>Login</button>
               </form>
+              <div className='form-links'>
+                <p>Don't have an account? <a href="#" onClick={handleSignup}>Sign Up</a></p>
+              </div>
+              <div className='admin-login'>
+                <p>Sign-in as Admin? <a href="#" onClick={handleAdminPage}>Admin Login</a></p>
+              </div>
             </div>
           </div>
         </div>

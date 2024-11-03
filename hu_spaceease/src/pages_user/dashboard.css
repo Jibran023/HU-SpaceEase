@@ -139,3 +139,28 @@ p {
     object-fit: cover; /* Ensure image covers the container */
     transition: opacity 1s ease-in-out; /* Smooth transition effect */
 }
+
+/* Styling for Superuser action buttons */
+.superuser-actions {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.action-button {
+    background-color: #77074e;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+    background-color: #9a0aff;
+}
+

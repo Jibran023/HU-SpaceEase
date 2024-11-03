@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBars } from '@fortawesome/free-solid-svg-icons';
 import './Navbar.css';
 
-function Navbar() {
+function Navbar({ isAdmin }) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -14,20 +14,21 @@ function Navbar() {
 
     const handleDashboard = (e) => {
         e.preventDefault();
-        navigate('/Dashboard');
+        // Navigate to the superuser dashboard if isAdmin is true, otherwise go to normal dashboard
+        navigate(isAdmin ? '/superuser' : '/dashboard');
     };
 
-    const handleviewroom = (e) => {
-        e.preventDefault();
-        navigate('/viewrooms');
-    };
+    // const handleViewRoom = (e) => {
+    //     e.preventDefault();
+    //     navigate('/viewrooms');
+    // };
 
-    const handlebookroom = (e) => {
+    const handleBookRoom = (e) => {
         e.preventDefault();
         navigate('/books');
     };
 
-    const handlestatus = (e) => {
+    const handleStatus = (e) => {
         e.preventDefault();
         navigate('/viewstatus');
     };
@@ -35,6 +36,11 @@ function Navbar() {
     const handleMap = (e) => {
         e.preventDefault();
         navigate('/HUmap');
+    };
+
+    const handleRoomRequests = (e) => {
+        e.preventDefault();
+        navigate('/roomrequests');
     };
 
     const handleLogin = (e) => {
@@ -50,16 +56,23 @@ function Navbar() {
         <div className="navbar">
             <h1 className="navbar-title">HU-SpaceEase</h1>
             <div className="navbar-icons">
-                <a href="#!" className="navbar-link" onClick={handlebookroom}>Book a Room</a>
-                <a href="#!" className="navbar-link" onClick={handleviewroom}>View All Rooms</a>
-                <a href="#!" className="navbar-link" onClick={handlestatus}>View Status</a>
+                <a href="#!" className="navbar-link" onClick={handleBookRoom}>Book a Room</a>
+                
+                {/* Add "Manage Room Requests" link if isAdmin is true */}
+                {isAdmin && (
+                    <a href="#!" className="navbar-link" onClick={handleRoomRequests}>Manage Room Requests</a>
+                )}
+                
+                {/* <a href="#!" className="navbar-link" onClick={handleViewRoom}>View All Rooms</a> */}
+                <a href="#!" className="navbar-link" onClick={handleStatus}>View Status</a>
                 <a href="#!" className="navbar-link" onClick={handleMap}>HU-Map</a>
+                
                 <FontAwesomeIcon icon={faHome} className="navbar-icon" onClick={handleDashboard} />
                 <div className="dropdown">
                     <FontAwesomeIcon icon={faBars} className="navbar-icon" onClick={toggleDropdown} />
                     {dropdownOpen && (
                         <div className="dropdown-menu">
-                            <button onClick={handleLogin}>Login</button>
+                            <button onClick={handleLogin}>Logout</button>
                             <button onClick={handleRefresh}>Refresh</button>
                         </div>
                     )}
