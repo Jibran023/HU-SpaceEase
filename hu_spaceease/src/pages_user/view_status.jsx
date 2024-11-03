@@ -1,8 +1,10 @@
 // ViewStatus.jsx
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './view_status.css';
 
 function ViewStatus() {
+    const navigate = useNavigate();
     const [requests, setRequests] = useState([]);
 
     useEffect(() => {
@@ -14,6 +16,10 @@ function ViewStatus() {
         ];
         setRequests(fetchedRequests);
     }, []);
+
+    const handleBackToDashboard = () => {
+        navigate('/dashboard'); // Navigate back to the user dashboard
+    };
 
     return (
         <div className="view-status-container">
@@ -29,6 +35,9 @@ function ViewStatus() {
                     </div>
                 ))}
             </div>
+            <button onClick={handleBackToDashboard} className="back-button">
+                Back to Dashboard
+            </button>
         </div>
     );
 }
