@@ -1,3 +1,4 @@
+// Dashboard.jsx
 import React, { useState, useEffect } from 'react';
 import './Dashboard.css'; 
 import { useNavigate } from 'react-router-dom';
@@ -33,22 +34,20 @@ function Dashboard() {
         'images/audi.jpg',
         'images/audi3.jpg',
         'images/audi4.jpg',
-        // 'images/dashboardimage.PNG'
     ];
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 3000); // Change image every 3 seconds
+        }, 3000);
 
         return () => clearInterval(interval); // Cleanup interval on component unmount
     }, [images.length]);
 
-    
     return (
         <>
-            <Navbar /> 
+            <Navbar isAdmin={false} /> {/* Explicitly set isAdmin to false */}
             <div className="title-banner">
                 HU-SpaceEase
             </div>
@@ -72,4 +71,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default Dashboard;  
