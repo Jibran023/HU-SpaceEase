@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router()
 import User from '../models/user.js'
 //getting all the users
-router.get('/', async (req, res) => {
+router.get('/api/login:email,password', async (req, res) => {
     try {
         const users = await User.find()
         res.json(users)
