@@ -1,7 +1,7 @@
 // AdminLogin.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AdminLogin.css'; // Add specific styles for the admin login if needed
+import './AdminLogin.css';
 
 function AdminLogin() {
   const navigate = useNavigate();
@@ -10,6 +10,11 @@ function AdminLogin() {
     e.preventDefault();
     // Logic to handle admin authentication can go here
     navigate('/superuser'); // Navigate to the superuser dashboard after successful login
+  };
+
+  const handleBackToLogin = (e) => {
+    e.preventDefault();
+    navigate('/'); // Navigate back to the normal login page
   };
 
   return (
@@ -27,6 +32,7 @@ function AdminLogin() {
           </div>
           <button type="submit" className="admin-login-button">Login</button>
         </form>
+        <button onClick={handleBackToLogin} className="back-button">Back to User Login</button>
       </div>
     </div>
   );

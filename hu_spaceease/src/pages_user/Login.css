@@ -36,10 +36,10 @@ body, html {
     align-items: center;
     width: 100%;
     max-width: 600px;
-    height: 50vh;
+    height: 50vh; /* Increased height for content */
     box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.2);
     animation: pulse 5s infinite ease-in-out;
-    padding: 20px 0;
+    padding: 30px 20px;
     box-sizing: border-box;
 }
 
@@ -62,8 +62,11 @@ body, html {
 /* Main heading in the semi-circle */
 .main-heading {
     color: #ffffff;
-    font-size: 48px;
+    font-size: 36px; /* Adjusted size for better fit */
     margin: 0 0 20px 0;
+    text-align: center;
+    padding: 0 20px;
+    word-wrap: break-word;
 }
 
 /* Login container for form */
@@ -79,15 +82,16 @@ body, html {
 /* Form styling */
 .form-background {
     background-color: #ffffff;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .login-heading {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-size: 24px;
     color: #77074e;
 }
@@ -116,7 +120,7 @@ body, html {
 /* Button styling */
 button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #77074e;
     border: none;
     border-radius: 4px;
@@ -124,11 +128,11 @@ button {
     font-size: 16px;
     color: white;
     margin-top: 20px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #e98ece;
-    color: white;
 }
 
 /* Fade-in and Fade-out classes for transitions */
@@ -142,25 +146,31 @@ button:hover {
     transition: opacity 1s ease-out;
 }
 
-/* Footer link styling */
-.footer-link {
-    color: #77074e;
-    text-decoration: none;
+/* Styling for Admin Login link */
+.admin-login {
+    margin-top: 15px;
+    text-align: center;
     font-size: 14px;
+    color: #77074e;
 }
 
-.footer-link:hover {
+.admin-login a {
+    color: #77074e;
+    text-decoration: none;
+}
+
+.admin-login a:hover {
     text-decoration: underline;
 }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .semi-circle {
-        height: 60vh;
+        height: 65vh; /* Increase height for smaller screens */
     }
 
     .main-heading {
-        font-size: 36px;
+        font-size: 28px;
     }
 
     .login-container {
@@ -174,11 +184,11 @@ button:hover {
 
 @media (max-width: 480px) {
     .semi-circle {
-        height: 70vh;
+        height: 70vh; /* Further increase height on mobile */
     }
 
     .main-heading {
-        font-size: 28px;
+        font-size: 24px;
         margin-bottom: 10px;
     }
 
@@ -195,11 +205,3 @@ button:hover {
         font-size: 14px;
     }
 }
-
-/* Styling for Admin Login Button */
-.admin-login {
-    margin-top: 15px;
-    text-align: center;
-}
-
-

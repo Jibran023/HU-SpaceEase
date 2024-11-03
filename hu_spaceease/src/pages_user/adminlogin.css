@@ -88,3 +88,24 @@
         font-size: 16px;
     }
 }
+
+/* Back button styling */
+.back-button {
+    margin-top: 15px;
+    background-color: transparent;
+    color: #77074e;
+    border: 2px solid #77074e;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #77074e;
+    color: white;
+}
+
