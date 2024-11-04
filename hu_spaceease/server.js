@@ -139,16 +139,22 @@ import userRoutes from './routes/users.js';  // Keep the .js extension for ES mo
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/Web_Dev_project', { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
-
-db.on('error', (error) => console.error(error));
-db.once('open', () => console.log("Connected to database"));
+// mongoose.connect('mongodb://localhost:27017/Web_Dev_project', { useNewUrlParser: true, useUnifiedTopology: true });
+// const db = mongoose.connection;
+mongoose
+  .connect("mongodb://localhost:27017/Web_Dev_project", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((error) => console.error("MongoDB connection error:", error));
+// db.on('error', (error) => console.error(error));
+// db.once('open', () => console.log("Connected to database"));
 
 // Middleware
 app.use(express.json());
 
 // Routes
-app.use('/users', userRoutes);
+app.use('/api', userRoutes);
 
 app.listen(3000, () => console.log("Server started on port 3000"));

@@ -1,11 +1,22 @@
 import express from 'express';
 const router = express.Router()
 import User from '../models/user.js'
+
 //getting all the users
-router.get('/api/login:email,password', async (req, res) => {
+router.get('/abc', async (req, res) => {
     try {
+    //     const userNew = await User({
+    //         email: "student1@habibuniversity.edu",
+    // password: "hashed_password_1",
+    // role: "student",
+    // name: "Ali",
+    // department: "Computer Science",
+    // position: "Member" // Only use "position" if it's required for your use case
+    //     });
+    //     userNew.save();
         const users = await User.find()
-        res.json(users)
+        console.log(users);
+        res.status(200).send(users)
     }
     catch (err) {
         res.status(500).json({ message: err.message })
