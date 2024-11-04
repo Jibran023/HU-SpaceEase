@@ -23,7 +23,9 @@ router.get('/abc', async (req, res) => {
     }
 })
 //getting one
-router.get('/:id', (req, res) => {
+router.get('/:user_id', async (req, res) => {
+    const user = await User.find({user_id:req.params.user_id})
+    console.log(user);
     res.send(req.params.id)
 })
 
