@@ -1,0 +1,108 @@
+[{
+  "_id": {
+    "$oid": "67285e4ec2ffac696e516182"
+  },
+  "room_id": "HU101",
+  "room_number": "101",
+  "building": "Main Academic Block",
+  "capacity": 30,
+  "floor": 1,
+  "features": [
+    "Projector",
+    "Whiteboard",
+    "AC"
+  ],
+  "is_booked": true,
+  "booking": {
+    "booked_by_user_id": "U12345",
+    "date": "2024-11-02",
+    "time_slot": "10:00-12:00",
+    "event": "Computer Science Lecture",
+    "approved": true,
+    "approved_by_admin_id": "A56789",
+    "approval_date": "2024-10-30"
+  }
+},
+{
+  "_id": {
+    "$oid": "67285e4ec2ffac696e516183"
+  },
+  "room_id": "LIB202",
+  "room_number": "202",
+  "building": "Library Block",
+  "capacity": 20,
+  "floor": 2,
+  "features": [
+    "Sound System",
+    "Projector"
+  ],
+  "is_booked": false,
+  "booking": null
+},
+{
+  "_id": {
+    "$oid": "67285e4ec2ffac696e516184"
+  },
+  "room_id": "AUD500",
+  "room_number": "500",
+  "building": "Auditorium Block",
+  "capacity": 200,
+  "floor": 5,
+  "features": [
+    "Stage",
+    "Lighting",
+    "Sound System"
+  ],
+  "is_booked": true,
+  "booking": {
+    "booked_by_user_id": "U67890",
+    "date": "2024-11-05",
+    "time_slot": "18:00-20:00",
+    "event": "Student Cultural Show",
+    "approved": false,
+    "approved_by_admin_id": null,
+    "approval_date": null
+  }
+},
+{
+  "_id": {
+    "$oid": "67285e4ec2ffac696e516185"
+  },
+  "room_id": "LAB302",
+  "room_number": "302",
+  "building": "Science Lab Block",
+  "capacity": 25,
+  "floor": 3,
+  "features": [
+    "Fume Hood",
+    "Chemical Storage",
+    "Projector"
+  ],
+  "is_booked": true,
+  "booking": {
+    "booked_by_user_id": "U23456",
+    "date": "2024-11-03",
+    "time_slot": "14:00-16:00",
+    "event": "Chemistry Lab Session",
+    "approved": true,
+    "approved_by_admin_id": "A98765",
+    "approval_date": "2024-11-01"
+  }
+},
+{
+  "_id": {
+    "$oid": "67285e4ec2ffac696e516186"
+  },
+  "room_id": "MEET101",
+  "room_number": "101",
+  "building": "Admin Block",
+  "capacity": 10,
+  "floor": 1,
+  "features": [
+    "Conference Table",
+    "Teleconferencing",
+    "AC"
+  ],
+  "is_booked": false,
+  "booking": null
+}]

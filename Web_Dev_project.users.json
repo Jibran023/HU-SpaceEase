@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "672863e49614f5dbbb9b5e45"
+  },
+  "email": "student1@habibuniversity.edu",
+  "password": "hashed_password_1",
+  "role": "student",
+  "name": "Ali Merchant",
+  "department": "Computer Science",
+  "position": "Member",
+  "createdAt": {
+    "$date": "2024-11-04T06:04:20.651Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-04T06:04:20.651Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6728652d9879dded8b53fb2b"
+  },
+  "user_id": "12",
+  "email": "student2@habibuniversity.edu",
+  "password": "hashed_password_1",
+  "role": "student",
+  "name": "Alizain_genuis",
+  "department": "Computer Science",
+  "position": "Member",
+  "createdAt": {
+    "$date": "2024-11-04T06:09:49.254Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-04T06:09:49.254Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6728663d81f663d9cec9608e"
+  },
+  "user_id": "19",
+  "email": "studen2@habibuniversity.edu",
+  "password": "hashed_password_1",
+  "role": "student",
+  "name": "Alizain_genuis",
+  "department": "Computer Science",
+  "position": "Member",
+  "createdAt": {
+    "$date": "2024-11-04T06:14:21.960Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-04T06:14:21.960Z"
+  },
+  "__v": 0
+}]
