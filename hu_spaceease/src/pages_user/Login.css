@@ -1,115 +1,126 @@
+/* Prevent scrolling on the entire page */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Login wrapper to cover full viewport */
 .login-wrapper {
     position: relative;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('images/audi.jpg'); 
-    background-size: cover; /* to ensure image covers the whole background */
-    background-position: center; 
-    background-repeat: no-repeat; /* to prevent it from repeating */
-    transition: background-image 1s ease-in-out; /* Smooth image transition */
+    background-image: url('images/audi.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out;
 }
 
-
-
-
+/* Semi-circle styling for bottom overlay */
 .semi-circle {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 50% 50% 0 0;
-    background: linear-gradient(135deg, #8c125f, #f08cc6); /* applying a diagonal gradient background, starting with a darker purple to a lighter pink color */
-    display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    padding-bottom: 50px; /* adding space at the bottom inside the semi-circle */
-    width: 600px;
-    height: 500px;
-    box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.2); /* adding a shadow beneath the semi-circle for depth and 3D effect */
-    animation: pulse 5s infinite ease-in-out; /* we apply the pulse animation: it lasts 5 seconds which repeats infinitel and smoothly transitions in and out */
-}
-
-/* Create a smooth pulsing animation */
-@keyframes pulse { /* we use this to define the steps of the animation which will help in showing how the element will change at different stages of the animation cycle */
-    0% {
-        transform: translateX(-50%) scale(1); /* at the start of the animation, the semi-circle is at its normal scale */
-        background: linear-gradient(135deg, #8c125f, #f08cc6); /* this is the background then */
-    }
-    50% {
-        transform: translateX(-50%) scale(1.05);/* At the midpoint of the animation, the semi-circle will grow slightly larger by scaling up by 5%, we go from 1.00 to 1.05 */
-        background: linear-gradient(135deg, #f08cc6, #8c125f); /* we reverse the colors */
-    }
-    100% {
-        transform: translateX(-50%) scale(1); /* when we go back to original size */
-        background: linear-gradient(135deg, #8c125f, #f08cc6); /* we return back to original color */
-    }
-}
-
-.main-heading {
-    color: #ffffff;
-    font-size: 62px;
-    margin-bottom: 20px;
-    margin-top: 120px; /* Reduce the top margin to move the heading upwards */
-}
-
-/* Optionally: Add some margin to the login container to fine-tune spacing */
-.login-container {
-    width: 50%;
+    background: linear-gradient(135deg, #8c125f, #f08cc6);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center; 
-    margin-top: -50px; /* Add a negative margin to push the form upwards */
+    width: 100%;
+    max-width: 600px;
+    height: 50vh; /* Increased height for content */
+    box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.2);
+    animation: pulse 5s infinite ease-in-out;
+    padding: 30px 20px;
+    box-sizing: border-box;
 }
 
+/* Pulsing animation */
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+        background: linear-gradient(135deg, #8c125f, #f08cc6);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+        background: linear-gradient(135deg, #f08cc6, #8c125f);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+        background: linear-gradient(135deg, #8c125f, #f08cc6);
+    }
+}
 
-  
+/* Main heading in the semi-circle */
+.main-heading {
+    color: #ffffff;
+    font-size: 36px; /* Adjusted size for better fit */
+    margin: 0 0 20px 0;
+    text-align: center;
+    padding: 0 20px;
+    word-wrap: break-word;
+}
 
+/* Login container for form */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Form styling */
 .form-background {
     background-color: #ffffff;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;
-    max-width: 400px;
+    box-sizing: border-box;
 }
 
-
 .login-heading {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-size: 24px;
     color: #77074e;
 }
 
-
+/* Input field styling */
 .input-group {
     margin-bottom: 15px;
     text-align: left;
+    width: 100%;
     color: #77074e;
 }
 
-label {
+.input-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-input {
+.input-group input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
+/* Button styling */
 button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #77074e;
     border: none;
     border-radius: 4px;
@@ -117,141 +128,80 @@ button {
     font-size: 16px;
     color: white;
     margin-top: 20px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #e98ece;
-    color: white;
 }
 
-/* Navbar styling */
-.navbar2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* Fade-in and Fade-out classes for transitions */
+.fade-in {
+    opacity: 1;
+    transition: opacity 1s ease-in;
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
+.fade-out {
+    opacity: 0.5;
+    transition: opacity 1s ease-out;
 }
 
-.navbar-logo {
-    height: 70px;
-    margin-right: 15px;
+/* Styling for Admin Login link */
+.admin-login {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #77074e;
 }
 
-.navbar-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #5a205a;
+.admin-login a {
+    color: #77074e;
+    text-decoration: none;
 }
 
+.admin-login a:hover {
+    text-decoration: underline;
+}
 
-
-
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .semi-circle {
-        height: 70%; /* increasing the height of the semi-circle to fit content */
-        padding-bottom: 30px;
+        height: 65vh; /* Increase height for smaller screens */
     }
 
     .main-heading {
-        font-size: 48px; /* reducing the heading size */
+        font-size: 28px;
     }
 
     .login-container {
-        width: 70%; /* reducing the width of the login container */
+        width: 80%;
     }
 
     .form-background {
-        padding: 30px; /* reducing padding */
-    }
-
-    .login-heading {
-        font-size: 28px; /* reducing the login heading font size */
-    }
-
-    input, button {
-        padding: 8px; /* Slightly reducing input/button padding */
+        padding: 20px;
     }
 }
-
 
 @media (max-width: 480px) {
     .semi-circle {
-        height: 80%; /* Further increasing the height for mobile */
-        padding-bottom: 20px;
+        height: 70vh; /* Further increase height on mobile */
     }
 
     .main-heading {
-        font-size: 36px; /* Further reducing heading size */
-        margin-bottom: 20px;
+        font-size: 24px;
+        margin-bottom: 10px;
     }
 
     .login-container {
-        width: 85%; /* narrowing container */
+        width: 90%;
     }
 
     .form-background {
-        padding: 20px; /* Smaller padding */
+        padding: 15px;
     }
 
-    .login-heading {
-        font-size: 24px; /* Smaller login heading */
-    }
-
-    input, button {
-        padding: 6px; /* reducing input/button padding */
-        font-size: 14px; /* Slightly smaller text for inputs and button */
+    button {
+        padding: 8px;
+        font-size: 14px;
     }
 }
-
-
-
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    overflow: hidden; /* to prevent scrolling */
-  }
-  
-  /* Fade-in and Fade-out classes */
-  .fade-in {
-    opacity: 1;
-    transition: opacity 1s ease-in; /* 1-second fade-in */
-  }
-  
-  .fade-out {
-    opacity: 0.5;
-    transition: opacity 1s ease-out; /* 1-second fade-out */
-  }
-  
-  input[type="email"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #0073e6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #005bb5;
-  }
-  

@@ -7,6 +7,10 @@ import HUmap from './pages_user/hu_map.jsx';
 import RoomBooking from './pages_user/books.jsx'
 import FormRoom from './pages_user/form.jsx';
 import About from './pages_user/about.jsx';
+import Signup from './pages_user/signup.jsx';
+import SuperUserDashboard from './pages_user/superuser_dashboard.jsx';
+import RoomRequests from './pages_user/roomrequests.jsx';
+import AdminLogin from './pages_user/adminlogin.jsx';
 import './App.css'
 
 function App() {
@@ -22,6 +26,10 @@ return (
         <Route path="/HUmap" element={<HUmap />} />
         <Route path="/forms" element={<FormRoom />} />
         <Route path="/About" element={<About />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/superuser" element={<SuperUserDashboard />} />
+        <Route path="/roomrequests" element={<RoomRequests />} />
+        <Route path="/adminlogin" element={<AdminLogin />} />
       </Routes>
     </Router>
   </>
