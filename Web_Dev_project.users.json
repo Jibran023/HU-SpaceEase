@@ -74,5 +74,24 @@
       "$date": "2024-11-06T20:27:22.244Z"
     },
     "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6728652d9379dded8b53fb2b"
+    },
+    "user_id": "12",
+    "email": "admin@habibuniversity.edu",
+    "password": "admin123",
+    "role": "admin",
+    "name": "Wajeeh",
+    "department": "Admin Office",
+    "position": "Member",
+    "createdAt": {
+      "$date": "2024-11-04T06:09:49.254Z"
+    },
+    "updatedAt": {
+      "$date": "2024-11-04T06:09:49.254Z"
+    },
+    "__v": 0
   }
 ]

@@ -208,6 +208,8 @@ router.get('/user-info', (req, res) => {
 
 // Get the path to your JSON file
 const usersFilePath = path.join('C:\\Users\\USER\\OneDrive\\Desktop\\semester 5\\HU-SpaceEase\\Web_Dev_project.users.json');
+// Get the path to your rooms JSON file
+const roomsFilePath = path.join('C:\\Users\\USER\\OneDrive\\Desktop\\semester 5\\HU-SpaceEase\\Web_Dev_project.Room.json');
 
 // Utility functions to read and write to the JSON file
 function readUsersFile() {
@@ -223,6 +225,15 @@ function writeUsersFile(users) {
 function generateRandomId() {
   return Math.floor(Math.random() * 1000000000).toString();
 }
+
+function readRoomsFile() {
+    const data = fs.readFileSync(roomsFilePath, 'utf8');
+    return JSON.parse(data);
+  }
+  
+function writeRoomsFile(rooms) {
+    fs.writeFileSync(roomsFilePath, JSON.stringify(rooms, null, 2));
+  }
 
 
 // Signup route to create a new user
@@ -260,6 +271,44 @@ router.post('/signup', (req, res) => {
       res.status(500).json({ message: 'An error occurred during signup', error: error.message });
     }
   });
+
+
+
+ // Route to insert a new room
+router.post('/insert-room', (req, res) => {
+    try {
+      const { roomName, building, capacity, floor, features, added_by } = req.body;
+  
+      // Read the existing rooms
+      const rooms = readRoomsFile();
+  
+      // Create new room object
+      const newRoom = {
+        _id: { "$oid": generateRandomId() },
+        room_id: `RM${rooms.length + 1}`,
+        room_number: (rooms.length + 1).toString().padStart(3, '0'),
+        room_name: roomName,
+        building,
+        capacity: parseInt(capacity, 10),
+        floor: parseInt(floor, 10),
+        features,
+        is_booked: false,
+        booking: null,
+        added_by: added_by || "unknown" // Default to "unknown" if not provided
+      };
+  
+      // Add new room to rooms array and save to JSON file
+      rooms.push(newRoom);
+      writeRoomsFile(rooms);
+  
+      // Respond with success
+      res.status(201).json({ message: 'Room added successfully', room: newRoom });
+    } catch (error) {
+      console.error('Error in /insert-room route:', error);
+      res.status(500).json({ message: 'An error occurred while adding the room', error: error.message });
+    }
+  });
+  
   
 
 
