@@ -89,12 +89,17 @@ import express from 'express';
 import bcrypt from 'bcrypt';  // For password hashing
 import User from '../models/user.js';
 import Booking from '../models/booking.js';
+<<<<<<< Updated upstream
 import fs from 'fs';
 import path from 'path';
 
 // import express from 'express';
 // const router = express.Router();
 
+=======
+import user from '../models/user.js';
+var UserLoggedId;
+>>>>>>> Stashed changes
 const router = express.Router();
 
 // Getting all users
@@ -167,6 +172,7 @@ router.post('/book-room', async (req, res) => {
 // Login route with hashed password check
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
+<<<<<<< Updated upstream
     const usersData = req.usersData;
     
     const user = usersData.find(u => u.email === email && u.password === password);
@@ -312,4 +318,62 @@ router.post('/insert-room', (req, res) => {
   
 
 
+=======
+    try {
+        // Find the user by email
+        const user = await User.findOne({ email });
+        if(user.password != password){
+            console.log("correct de bhai");
+             res.status(401).json({ success: false, message: 'Invalid email or password' });
+
+
+        }
+        else{
+    UserLoggedId=user.user_id;
+console.log(UserLoggedId);
+            res.status(200).json({ success: true, role: user.role });
+
+        }
+        
+        // Check if user exists and verify password
+    //     if (user && await bcrypt.compare(password, user.password)) {
+    //     } else {
+    //         res.status(401).json({ success: false, message: 'Invalid email or password' });
+    //     }
+    } catch (error) {
+        res.status(500).json({ message: "Error logging in", error: error.message });
+    }
+});
+
+router.put('/update-password', async (req, res) => {
+    console.log(UserLoggedId);
+    const { newPassword, confirmNewPassword } = req.body;
+    console.log(newPassword, confirmNewPassword);
+
+    if (!newPassword || !confirmNewPassword) {
+        return res.status(400).json({ message: "Both new password and confirm password fields are required" });
+    }
+
+    if (newPassword !== confirmNewPassword) {
+        return res.status(400).json({ message: "New password and confirm password do not match" });
+    }
+
+    // Find the user by the logged-in user's ID (UserLoggedId)
+    try {
+        const user = await User.findOne({ user_id: UserLoggedId });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Update the user's password directly (without hashing)
+        user.password = newPassword;
+        await user.save();
+
+        res.status(200).json({ message: "Password updated successfully" });
+    } catch (error) {
+        res.status(500).json({ message: "Error updating password", error: error.message });
+    }
+});
+>>>>>>> Stashed changes
 export default router;

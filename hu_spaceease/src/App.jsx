@@ -12,6 +12,7 @@ import SuperUserDashboard from './pages_user/superuser_dashboard.jsx';
 import RoomRequests from './pages_user/roomrequests.jsx';
 import AdminLogin from './pages_user/adminlogin.jsx';
 import './App.css'
+import ChangePassword from './pages_user/ChangePassword.jsx';
 
 function App() {
 
@@ -30,6 +31,8 @@ return (
         <Route path="/superuser" element={<SuperUserDashboard />} />
         <Route path="/roomrequests" element={<RoomRequests />} />
         <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/ChangePassword" element={<ChangePassword/>} />
+
       </Routes>
     </Router>
   </>

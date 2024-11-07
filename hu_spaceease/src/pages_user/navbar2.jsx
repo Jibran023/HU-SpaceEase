@@ -47,6 +47,11 @@ function Navbar({ isAdmin }) {
         window.location.reload();
     };
 
+    const HandlePasswordChange=(e)=>{
+        e.preventDefault();
+        navigate("/ChangePassword")
+    };
+
     return (
         <div className="navbar">
             <h1 className="navbar-title">HU-SpaceEase</h1>
@@ -71,6 +76,8 @@ function Navbar({ isAdmin }) {
                         <div className="dropdown-menu">
                             <button onClick={handleLogin}>Logout</button>
                             <button onClick={handleRefresh}>Refresh</button>
+                            <button onClick={HandlePasswordChange}>Change Password</button>
+
                         </div>
                     )}
                 </div>
