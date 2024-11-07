@@ -10,6 +10,7 @@
 // }));
 
 //////////////////////////////////////////
+
 import mongoose from 'mongoose';
 
 // Define Booking schema

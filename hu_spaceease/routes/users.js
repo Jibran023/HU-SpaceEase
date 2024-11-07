@@ -89,6 +89,11 @@ import express from 'express';
 import bcrypt from 'bcrypt';  // For password hashing
 import User from '../models/user.js';
 import Booking from '../models/booking.js';
+import fs from 'fs';
+import path from 'path';
+
+// import express from 'express';
+// const router = express.Router();
 
 const router = express.Router();
 
@@ -160,30 +165,102 @@ router.post('/book-room', async (req, res) => {
 });
 
 // Login route with hashed password check
-router.post('/login', async (req, res) => {
+router.post('/login', (req, res) => {
     const { email, password } = req.body;
+    const usersData = req.usersData;
+    
+    const user = usersData.find(u => u.email === email && u.password === password);
 
-    try {
-        // Find the user by email
-        const user = await User.findOne({ email });
-        if(user.password != password){
-            console.log("correct de bhai");
-             res.status(401).json({ success: false, message: 'Invalid email or password' });
-
-        }
-        else{
-            res.status(200).json({ success: true, role: user.role });
-
-        }
-        
-        // Check if user exists and verify password
-    //     if (user && await bcrypt.compare(password, user.password)) {
-    //     } else {
-    //         res.status(401).json({ success: false, message: 'Invalid email or password' });
-    //     }
-    } catch (error) {
-        res.status(500).json({ message: "Error logging in", error: error.message });
+    if (user) {
+        res.status(200).json({
+            success: true,
+            role: user.role,
+            name: user.name,           // Send name in the response
+            user_id: user.user_id || user._id.$oid  // Send user_id or _id in the response
+        });
+    } else {
+        res.status(401).json({ success: false, message: 'Invalid email or password' });
     }
 });
+
+
+// Assuming `req.user` is available after login to identify the logged-in user
+// Assuming `req.user` is available after login to identify the logged-in user
+router.get('/user-info', (req, res) => {
+    const userEmail = req.query.email; // Get the email from the query
+    const usersData = req.usersData; // Access users data from the JSON file
+
+    // Find the user based on email
+    const user = usersData.find(u => u.email === userEmail);
+
+    if (user) {
+        // Return user's name and ID (user_id or _id depending on your preference)
+        res.status(200).json({ name: user.name, studentID: user.user_id || user._id.$oid });
+    } else {
+        res.status(404).json({ message: 'User not found' });
+    }
+});
+
+// const router = express.Router();
+
+// Get the path to your JSON file
+// const router = express.Router();
+
+// Get the path to your JSON file
+const usersFilePath = path.join('C:\\Users\\USER\\OneDrive\\Desktop\\semester 5\\HU-SpaceEase\\Web_Dev_project.users.json');
+
+// Utility functions to read and write to the JSON file
+function readUsersFile() {
+  const data = fs.readFileSync(usersFilePath, 'utf8');
+  return JSON.parse(data);
+}
+
+function writeUsersFile(users) {
+  fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+}
+
+// Generate a random ID for _id and user_id
+function generateRandomId() {
+  return Math.floor(Math.random() * 1000000000).toString();
+}
+
+
+// Signup route to create a new user
+router.post('/signup', (req, res) => {
+    try {
+      const { name, email, password } = req.body;
+  
+      const users = readUsersFile();
+  
+      const userExists = users.some(user => user.email === email);
+      if (userExists) {
+        return res.status(400).json({ message: 'User already exists' });
+      }
+  
+      const newUser = {
+        _id: { "$oid": generateRandomId() },
+        user_id: generateRandomId(),
+        email,
+        password,
+        role: 'student',
+        name,
+        department: 'Computer Science',
+        position: 'Member',
+        createdAt: { "$date": new Date().toISOString() },
+        updatedAt: { "$date": new Date().toISOString() },
+        __v: 0
+      };
+  
+      users.push(newUser);
+      writeUsersFile(users);
+  
+      res.status(201).json({ message: 'User created successfully' });
+    } catch (error) {
+      console.error('Error in /signup route:', error);
+      res.status(500).json({ message: 'An error occurred during signup', error: error.message });
+    }
+  });
+  
+
 
 export default router;

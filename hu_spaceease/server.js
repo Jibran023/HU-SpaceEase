@@ -130,10 +130,16 @@
 // };
 
 // bookingRequest();import express from 'express';
+
 import express from 'express';
-import mongoose from 'mongoose';
-import userRoutes from './routes/users.js';
 import cors from 'cors';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import userRoutes from './routes/users.js';
+
+// Use the absolute path to the JSON file
+const usersData = JSON.parse(fs.readFileSync('C:\\Users\\USER\\OneDrive\\Desktop\\semester 5\\HU-SpaceEase\\Web_Dev_project.users.json', 'utf8'));
 
 const app = express();
 
@@ -141,13 +147,11 @@ const app = express();
 app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json()); // Parse JSON bodies
 
-// Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/Web_Dev_project", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log("Connected to MongoDB"))
-.catch((error) => console.error("MongoDB connection error:", error));
+// Attach usersData to each request
+app.use((req, res, next) => {
+    req.usersData = usersData; // Attach usersData to each request
+    next();
+});
 
 // Use user routes under the /api path
 app.use('/api', userRoutes);
