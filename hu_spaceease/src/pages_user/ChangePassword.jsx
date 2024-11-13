@@ -74,13 +74,13 @@ const ChangePassword = () => {
                 </div>
                 {errorMessage && <div style={styles.error}>{errorMessage}</div>}
                 {successMessage && <div style={styles.success}>{successMessage}</div>}
-                <button type="submit" style={styles.button}>Update Password</button>
+                <button type="submit" style={styles.button} onClick={HandleUpdatePassword}>Update Password</button>
             </form>
         </div>
     );
 };
 
-const styles = {
+const styles = { 
     container: {
         display: 'flex',
         flexDirection: 'column',

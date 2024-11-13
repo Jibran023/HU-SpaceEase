@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "67285e9bc2ffac696e51618b"
+  },
+  "user_id": "U12345",
+  "email": "student1@habibuniversity.edu",
+  "password": "hashed_password_1",
+  "role": "student",
+  "name": "Ali Merchant",
+  "department": "Computer Science",
+  "enrollment_year": 2022
+},
+{
+  "_id": {
+    "$oid": "67285e9bc2ffac696e51618c"
+  },
+  "user_id": "U67890",
+  "email": "student2@habibuniversity.edu",
+  "password": "hashed_password_2",
+  "role": "student",
+  "name": "Sara Khan",
+  "department": "Social Sciences",
+  "enrollment_year": 2021
+},
+{
+  "_id": {
+    "$oid": "67285e9bc2ffac696e51618d"
+  },
+  "user_id": "A56789",
+  "email": "admin1@habibuniversity.edu",
+  "password": "hashed_password_3",
+  "role": "admin",
+  "name": "Admin Member 1",
+  "department": "Facilities Management",
+  "position": "Event Coordinator"
+},
+{
+  "_id": {
+    "$oid": "67285e9bc2ffac696e51618e"
+  },
+  "user_id": "A98765",
+  "email": "admin2@habibuniversity.edu",
+  "password": "hashed_password_4",
+  "role": "admin",
+  "name": "Admin Member 2",
+  "department": "Laboratory Management",
+  "position": "Lab Supervisor"
+}]
