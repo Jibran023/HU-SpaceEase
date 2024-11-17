@@ -86,11 +86,8 @@
 
 
 import express from 'express';
-import bcrypt from 'bcrypt';  // For password hashing
 import User from '../models/user.js';
-import Booking from '../models/booking.js';
-import fs from 'fs';
-import path from 'path';
+
 
 // import express from 'express';
 // const router = express.Router();
@@ -166,23 +163,23 @@ const router = express.Router();
 // });
 
 // Login route with hashed password check
-router.post('/login', (req, res) => {
-    const { email, password } = req.body;
-    const usersData = req.usersData;
+// router.post('/login', (req, res) => {
+//     const { email, password } = req.body;
+//     const usersData = req.usersData;
     
-    const user = usersData.find(u => u.email === email && u.password === password);
+//     const user = usersData.find(u => u.email === email && u.password === password);
 
-    if (user) {
-        res.status(200).json({
-            success: true,
-            role: user.role,
-            name: user.name,           // Send name in the response
-            user_id: user.user_id || user._id.$oid  // Send user_id or _id in the response
-        });
-    } else {
-        res.status(401).json({ success: false, message: 'Invalid email or password' });
-    }
-});
+//     if (user) {
+//         res.status(200).json({
+//             success: true,
+//             role: user.role,
+//             name: user.name,           // Send name in the response
+//             user_id: user.user_id || user._id.$oid  // Send user_id or _id in the response
+//         });
+//     } else {
+//         res.status(401).json({ success: false, message: 'Invalid email or password' });
+//     }
+// });
 
 
 // // Assuming `req.user` is available after login to identify the logged-in user

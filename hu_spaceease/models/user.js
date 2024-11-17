@@ -37,4 +37,4 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true }); // Automatically adds createdAt and updatedAt fields
 
 // Export the model as default for ES module compatibility
-export default mongoose.model('User', UserSchema);
+export default mongoose.model('Users', UserSchema);
