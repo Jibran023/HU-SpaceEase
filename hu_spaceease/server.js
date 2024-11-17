@@ -202,8 +202,58 @@
 
 //latest code 
 // server.js
+
+// import { MongoClient } from 'mongodb';
+// import dotenv from 'dotenv';
+
+// // Load environment variables from .env file
+// dotenv.config();
+
+// // MongoDB connection URI from .env
+// const uri = process.env.MONGODB_URI;
+
+// // Create a new MongoClient
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// const connectToMongoDB = async () => {
+//     try {
+//         // Connect to MongoDB
+//         await client.connect();
+//         console.log('Connected to MongoDB');
+
+//         // Access a database (replace 'myDatabase' with your database name)
+//         const database = client.db('Web_Dev_project');
+
+//         // Perform any operations here
+//         const collection = database.collection('Users');
+//         console.log('Accessed collection:', collection.collectionName);
+
+//     } catch (error) {
+//         console.error('Error connecting to MongoDB:', error);
+//     // } finally {
+//     //     // Close the connection
+//     //     await client.close();
+//     //     console.log('Connection to MongoDB closed');
+//     // }
+//     }
+// };
+
+// // Run the connection function
+// connectToMongoDB();
+
+
+
+
+
+//latest tareen code 
+
+import express from 'express';
 import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
+import userRoutes from './routes/users.js'; // Import your router
+import cors from 'cors'; // Import the CORS middleware
+
+
 
 // Load environment variables from .env file
 dotenv.config();
@@ -214,27 +264,41 @@ const uri = process.env.MONGODB_URI;
 // Create a new MongoClient
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+// Initialize Express app
+const app = express();
+
+// Middleware to parse JSON requests
+app.use(express.json());
+app.use('/api', userRoutes); // Use the routes in the `/api` path
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Add allowed headers
+}));
+
 const connectToMongoDB = async () => {
     try {
         // Connect to MongoDB
         await client.connect();
         console.log('Connected to MongoDB');
 
-        // Access a database (replace 'myDatabase' with your database name)
-        const database = client.db('Web_Dev_project');
+        // Access a database
+        const database = client.db('Web_Dev_Project');
 
-        // Perform any operations here
-        const collection = database.collection('Users');
-        console.log('Accessed collection:', collection.collectionName);
+        // Store the collection in app.locals for reuse
+        app.locals.usersCollection = database.collection('Users');
+        console.log('Accessed collection: Users');
 
     } catch (error) {
         console.error('Error connecting to MongoDB:', error);
-    } finally {
-        // Close the connection
-        await client.close();
-        console.log('Connection to MongoDB closed');
+        process.exit(1); // Exit if the database connection fails
     }
 };
+// Start the server after connecting to MongoDB
+const PORT = 3000;
 
-// Run the connection function
-connectToMongoDB();
+connectToMongoDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+});
