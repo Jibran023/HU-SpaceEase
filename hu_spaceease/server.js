@@ -3,13 +3,13 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { connectDB } from './Config/database.js';
 import studentRoutes from './routes/users.js';
+import cors from 'cors';
+const app = express();
 
 dotenv.config();
 connectDB();
 
-const app = express();
 app.use(bodyParser.json());
-import cors from 'cors';
 app.use(cors({ origin: 'http://localhost:5173' }));
 
 
