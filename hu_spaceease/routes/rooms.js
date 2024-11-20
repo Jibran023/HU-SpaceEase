@@ -26,7 +26,9 @@ router.get("/test", async (req, res) => {
           approval_date: "2024-10-30",
         },
         added_by: "Admin001",
-        image: "https://example.com/images/hu101.jpg",
+        image: "hu_spaceease\\public\\images\\audi4.jpg", // Updated image path
+        description:
+          "A fully equipped computer science lab with all necessary tech for lectures and labs.",
       },
       {
         room_id: "LIB202",
@@ -39,7 +41,9 @@ router.get("/test", async (req, res) => {
         is_booked: false,
         booking: null,
         added_by: "Admin002",
-        image: "https://example.com/images/lib202.jpg",
+        image: "hu_spaceease\\public\\images\\audi4.jpg", // Updated image path
+        description:
+          "A quiet study room with basic facilities for individual or group study sessions.",
       },
       {
         room_id: "AUD500",
@@ -60,7 +64,9 @@ router.get("/test", async (req, res) => {
           approval_date: null,
         },
         added_by: "Admin003",
-        image: "https://example.com/images/aud500.jpg",
+        image: "hu_spaceease\\public\\images\\audi4.jpg", // Updated image path
+        description:
+          "A large auditorium equipped with a stage, lighting, and sound system, perfect for events and shows.",
       },
       {
         room_id: "LAB302",
@@ -81,7 +87,9 @@ router.get("/test", async (req, res) => {
           approval_date: "2024-11-01",
         },
         added_by: "Admin004",
-        image: "https://example.com/images/lab302.jpg",
+        image: "hu_spaceease\\public\\images\\audi4.jpg", // Updated image path
+        description:
+          "A well-equipped chemistry lab for practical sessions and experiments.",
       },
       {
         room_id: "MEET101",
@@ -94,7 +102,9 @@ router.get("/test", async (req, res) => {
         is_booked: false,
         booking: null,
         added_by: "Admin005",
-        image: "https://example.com/images/meet101.jpg",
+        image: "hu_spaceease\\public\\images\\audi4.jpg", // Updated image path
+        description:
+          "A small, yet well-equipped conference room for meetings and discussions.",
       },
       {
         room_id: "RM006",
@@ -107,7 +117,9 @@ router.get("/test", async (req, res) => {
         is_booked: false,
         booking: null,
         added_by: "Admin006",
-        image: "https://example.com/images/rm006.jpg",
+        image: "hu_spaceease\\public\\images\\audi4.jpg", // Updated image path
+        description:
+          "A meeting room with a large screen, ideal for presentations and video conferences.",
       },
     ];
 
@@ -125,5 +137,16 @@ router.get("/test", async (req, res) => {
   }
 });
 
+router.delete("/remove-all-rooms", async (req, res) => {
+  try {
+    const result = await Room.deleteMany({}); // Deletes all rooms from the database
+    res.status(200).json({
+      message: "All rooms have been removed successfully",
+      deletedCount: result.deletedCount,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 // Export the router
 export default router;

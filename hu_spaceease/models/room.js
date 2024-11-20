@@ -22,6 +22,7 @@ const RoomSchema = new Schema({
   booking: { type: BookingSchema, required: false }, // Nested booking schema
   added_by: { type: String, required: false }, // Optional field for admin tracking
   image: { type: String, required: false }, // New field to store room image
+  description: { type: String, required: false }, // New field for room description
 });
 
 export default model("Room", RoomSchema);
