@@ -4,7 +4,7 @@ import Room from "../models/room.js";
 const router = express.Router();
 
 // Add multiple rooms (data provided)
-router.post("/test", async (req, res) => {
+router.get("/test", async (req, res) => {
   try {
     const rooms = [
       {
