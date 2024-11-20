@@ -21,7 +21,7 @@ const ChangePassword = () => {
 
     const HandleUpdatePassword = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/update-password', {
+            const response = await fetch('http://localhost:5000/api/update-password', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -341,7 +341,7 @@ router.post("/login", async (req, res) => {
     }
 
     // Set the logged-in user's ID
-    const UserLoggedId = user.user_id;
+    UserLoggedId = user.user_id;
     console.log(UserLoggedId);
 
     // Respond with success and user's role
@@ -408,16 +408,16 @@ router.post("/oldlogin", async (req, res) => {
 
 router.put("/update-password", async (req, res) => {
   console.log(UserLoggedId);
-  const { newPassword, confirmNewPassword } = req.body;
-  console.log(newPassword, confirmNewPassword);
+  const { newPassword, confirmPassword } = req.body;
+  console.log(newPassword, confirmPassword);
 
-  if (!newPassword || !confirmNewPassword) {
+  if (!newPassword || !confirmPassword) {
     return res.status(400).json({
       message: "Both new password and confirm password fields are required",
     });
   }
 
-  if (newPassword !== confirmNewPassword) {
+  if (newPassword !== confirmPassword) {
     return res
       .status(400)
       .json({ message: "New password and confirm password do not match" });
