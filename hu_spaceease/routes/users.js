@@ -293,38 +293,29 @@
 //       res.status(500).json({ message: 'An error occurred while adding the room', error: error.message });
 //     }
 //   });
+
 import express from "express";
-import bcrypt from "bcrypt";
 import User from "../models/user.js";
 
+var UserLoggedId;
 const router = express.Router();
 
-// Number of salt rounds for hashing
-const SALT_ROUNDS = 10;
-
-// Route to create a test user with a hashed password
 router.get("/test", async (req, res) => {
-  try {
-    const randomUser = {
-      user_id: `U-${Math.floor(Math.random() * 1000)}`, // Random ID
-      email: `test${Math.floor(Math.random() * 1000)}@habibuniversity.edu`,
-      password: await bcrypt.hash("password123", SALT_ROUNDS), // Hash the password
-      role: "student", // Example role
-      name: "John Doe", // Example name
-      department: "Computer Science", // Example department
-      position: "Undergraduate", // Example position
-    };
+  const randomUser = {
+    user_id: `U-${Math.floor(Math.random() * 1000)}`, // Random ID
+    email: `test${Math.floor(Math.random() * 1000)}@habibuniversity.edu`,
+    password: "password123", // Example password
+    role: "student", // Example role
+    name: "John Doe", // Example name
+    department: "Computer Science", // Example department
+    position: "Undergraduate", // Example position
+  };
 
-    // Create a new user in the database
-    const user = new User(randomUser);
-    await user.save();
+  // Create a new user in the database
+  const user = new User(randomUser);
+  const savedUser = await user.save();
 
-    return res.json(await User.find());
-  } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error creating user", error: error.message });
-  }
+  return res.json(await User.find());
 });
 
 // POST Login Route
@@ -333,6 +324,7 @@ router.post("/login", async (req, res) => {
 
   try {
     // Find the user by email
+    console.log(await User.find());
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -341,14 +333,16 @@ router.post("/login", async (req, res) => {
         .json({ success: false, message: "Invalid email or password" });
     }
 
-    // Check if the password matches using bcrypt
-    const isPasswordMatch = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordMatch) {
+    // Check if the password matches (no hashing involved)
+    if (user.password !== password) {
       return res
         .status(401)
         .json({ success: false, message: "Invalid email or password" });
     }
+
+    // Set the logged-in user's ID
+    UserLoggedId = user.user_id;
+    console.log(UserLoggedId);
 
     // Respond with success and user's role
     res.status(200).json({
