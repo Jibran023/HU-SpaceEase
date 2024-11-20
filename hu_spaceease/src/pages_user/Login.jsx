@@ -33,10 +33,17 @@ function Login() {
             // Store the logged-in user's email, name, and user_id in localStorage
             localStorage.setItem('userEmail', email);
             localStorage.setItem('userName', data.name);  // Assuming `name` is in the response
-            localStorage.setItem('userId', data.user_id);  // Assuming `user_id` is in the response
-            
-            // Navigate to the dashboard or any appropriate page
+            localStorage.setItem('userId', data.user_id);
+            localStorage.setItem('userrole', data.user_role);
+            // console.log(data.user_role);  // Assuming `user_id` is in the response
+            if(data.user_role=='student'){
             navigate('/dashboard');
+
+            }
+            else if(data.user_role=='admin'){
+              navigate('/superuser')
+            }
+            // Navigate to the dashboard or any appropriate page
         } else {
             alert('Login failed: ' + data.message);
         }

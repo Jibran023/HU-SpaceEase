@@ -354,7 +354,8 @@ router.post("/login", async (req, res) => {
     res.status(200).json({
       success: true,
       name: user.name, // Assuming `name` exists in the User model
-      user_id: user.user_id, // Use the key the frontend expects
+      user_id: user.user_id,
+      user_role: user.role, // Use the key the frontend expects
     });
   } catch (error) {
     res.status(500).json({ message: "Error logging in", error: error.message });
