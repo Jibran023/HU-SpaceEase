@@ -293,6 +293,7 @@
 //       res.status(500).json({ message: 'An error occurred while adding the room', error: error.message });
 //     }
 //   });
+
 import express from "express";
 import bcrypt from "bcrypt";
 import User from "../models/user.js";

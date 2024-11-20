@@ -148,5 +148,22 @@ router.delete("/remove-all-rooms", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+// API to fetch all rooms
+router.get("/all", async (req, res) => {
+  try {
+    const rooms = await Room.find(); // Fetch all room details from the database
+    res.status(200).json({
+      message: "Rooms fetched successfully",
+      rooms,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching rooms",
+      error: error.message,
+    });
+  }
+});
+
 // Export the router
 export default router;
