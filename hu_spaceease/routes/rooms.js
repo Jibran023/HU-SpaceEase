@@ -137,6 +137,51 @@ router.get("/test", async (req, res) => {
   }
 });
 
+router.get("/unapproved-rooms", async (req, res) => {
+  try {
+    // Fetch rooms where the booking approval is pending (null)
+    const unapprovedRooms = await Room.find({ "booking.approved": null });
+
+    res.status(200).json({ success: true, rooms: unapprovedRooms });
+  } catch (error) {
+    console.error("Error fetching unapproved rooms:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+// Approve a room
+router.put("/approve-room/:id", async (req, res) => {
+  try {
+    const room = await Room.findByIdAndUpdate(
+      req.params.id,
+      {
+        "booking.approved": true,
+        "booking.approval_date": new Date().toISOString(),
+      },
+      { new: true }
+    );
+    res.status(200).json({ success: true, room });
+  } catch (error) {
+    console.error("Error approving room:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+// Reject a room
+router.put("/reject-room/:id", async (req, res) => {
+  try {
+    const room = await Room.findByIdAndUpdate(
+      req.params.id,
+      { "booking.approved": false },
+      { new: true }
+    );
+    res.status(200).json({ success: true, room });
+  } catch (error) {
+    console.error("Error rejecting room:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
 router.delete("/remove-all-rooms", async (req, res) => {
   try {
     const result = await Room.deleteMany({}); // Deletes all rooms from the database

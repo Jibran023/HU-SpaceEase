@@ -1,4 +1,3 @@
-// RoomRequests.jsx
 import React, { useState, useEffect } from 'react';
 import './roomrequests.css';
 
@@ -6,25 +5,38 @@ function RoomRequests() {
     const [requests, setRequests] = useState([]);
 
     useEffect(() => {
-        // Fetch room requests from an API or a static file
-        // This is a placeholder for actual data fetching logic
-        const fetchedRequests = [
-            { id: 1, room: "Room A", requester: "John Doe", status: "Pending" },
-            { id: 2, room: "Room B", requester: "Jane Smith", status: "Approved" },
-            { id: 3, room: "Room C", requester: "Michael Brown", status: "Pending" },
-        ];
-        setRequests(fetchedRequests);
+        const fetchUnapprovedRooms = async () => {
+            try {
+                const response = await fetch("http://localhost:5000/room-api/unapproved-rooms");
+                const data = await response.json();
+
+                if (data.success) {
+                    // Simplified structure to match the old code
+                    const simplifiedRequests = data.rooms.map(room => ({
+                        id: room._id,
+                        room: room.room_name || room.room_number || "N/A",
+                        requester: room.booking?.booked_by_user_id || "Unknown",
+                        status: room.is_booked ? "Pending" : "Available",
+                    }));
+                    setRequests(simplifiedRequests);
+                } else {
+                    console.error("Failed to fetch unapproved rooms:", data.message);
+                }
+            } catch (error) {
+                console.error("Error fetching unapproved rooms:", error);
+            }
+        };
+
+        fetchUnapprovedRooms();
     }, []);
 
     const handleApprove = (id) => {
-        // Logic to approve the request (e.g., API call to update status)
         setRequests(requests.map(request => 
             request.id === id ? { ...request, status: "Approved" } : request
         ));
     };
 
     const handleReject = (id) => {
-        // Logic to reject the request (e.g., API call to update status)
         setRequests(requests.map(request => 
             request.id === id ? { ...request, status: "Rejected" } : request
         ));
