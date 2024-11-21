@@ -145,19 +145,26 @@ router.get("/test", async (req, res) => {
     });
   }
 });
+
 router.get("/unapproved-rooms", async (req, res) => {
   try {
     // Fetch rooms where the booking approval is pending
     const unapprovedRooms = await Room.find({ status: "Pending" });
 
     // Map the fetched data to a simplified format
-    const formattedRooms = unapprovedRooms.map((room) => ({
-      id: room.room_id,
-      room_name: room.room_name || room.room_number || "N/A",
-      requester: room.booking?.booked_by_user_id || "Unknown",
-      is_booked: room.is_booked || false,
-      RoomStatus: room.status,
-    }));
+    const formattedRooms = unapprovedRooms.map((room) => {
+      if (room.room_id == "HU101") {
+        console.log(room);
+        console.log(room.requested_by || "Unknown");
+      }
+      return {
+        id: room.room_id,
+        room_name: room.room_name || room.room_number || "N/A",
+        requester: room.requested_by || "Unknown",
+        is_booked: room.is_booked,
+        RoomStatus: room.status,
+      };
+    });
 
     res.status(200).json({ success: true, rooms: formattedRooms });
   } catch (error) {
@@ -181,7 +188,6 @@ router.put("/approve-room/:id", async (req, res) => {
   try {
     // Find the room by room_id (use findOne for a single document)
     const room = await Room.findOne({ room_id: roomId });
-    console.log(room);
 
     if (!room) {
       return res

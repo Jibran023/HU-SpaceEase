@@ -4,33 +4,33 @@ import './roomrequests.css';
 function RoomRequests() {
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
+    const fetchUnapprovedRooms = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/room-api/unapproved-rooms");
+            const data = await response.json();
 
+            if (data.success) {
+                const simplifiedRequests = data.rooms.map(room => {
+                    console.log(room)
+                    return {
+                    id: room.id, 
+                    room_name: room.room_name || "N/A", 
+                    requester: room.requester || "Unknown", 
+                    is_booked: room.is_booked || false,
+                    RoomStatus: room.RoomStatus, 
+                }});
+                setRequests(simplifiedRequests);
+            } else {
+                console.error("Failed to fetch unapproved rooms:", data.message);
+            }
+        } catch (error) {
+            console.error("Error fetching unapproved rooms:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
     // Fetch unapproved rooms
     useEffect(() => {
-        const fetchUnapprovedRooms = async () => {
-            try {
-                const response = await fetch("http://localhost:5000/room-api/unapproved-rooms");
-                const data = await response.json();
-
-                if (data.success) {
-                    const simplifiedRequests = data.rooms.map(room => ({
-                        id: room.id, 
-                        room_name: room.room_name || "N/A", 
-                        requester: room.requester || "Unknown", 
-                        is_booked: room.is_booked || false,
-                        RoomStatus: room.RoomStatus || "Pending", 
-                    }));
-                    setRequests(simplifiedRequests);
-                } else {
-                    console.error("Failed to fetch unapproved rooms:", data.message);
-                }
-            } catch (error) {
-                console.error("Error fetching unapproved rooms:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchUnapprovedRooms();
     }, []);
 
@@ -43,12 +43,13 @@ function RoomRequests() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    admin_id: "A56789",  // Replace with the actual admin's ID
+                    admin_id: "U-401",  // Replace with the actual admin's ID
                     user_id: requester,  // Replace with the actual user's ID (requester's ID)
                     room_id: id,  // Send the room id in the request body
                 }),
             });
-    
+    console.log(id);
+    console.log(requester);
             const data = await response.json();
     
             if (data.success) {
@@ -63,7 +64,7 @@ function RoomRequests() {
     };
     
     // Handle rejection
-    const handleReject = (id) => {
+    const handleReject = (id,requester) => {
         setRequests(requests.map(request =>
             request.id === id ? { ...request, RoomStatus: "Rejected" } : request
         ));
@@ -89,7 +90,7 @@ function RoomRequests() {
                                     Approve
                                 </button>
                                 <button
-                                    onClick={() => handleReject(request.id)}
+                                    onClick={() => handleReject(request.id, requst.requester)}
                                     className="reject-button"
                                 >
                                     Reject
