@@ -153,10 +153,11 @@ router.get("/unapproved-rooms", async (req, res) => {
 
     // Map the fetched data to a simplified format
     const formattedRooms = unapprovedRooms.map((room) => {
-      if (room.room_id == "HU101") {
-        console.log(room);
-        console.log(room.requested_by || "Unknown");
-      }
+      // if (room.room_id == "HU101") {
+      //   console.log(room);
+      //   console.log(room.requested_by || "Unknown");
+      // }
+      console.log(room.room_name);
       return {
         id: room.room_id,
         room_name: room.room_name || room.room_number || "N/A",
@@ -236,7 +237,9 @@ router.put("/approve-room/:id", async (req, res) => {
 // Reject a room
 router.put("/reject-room/:id", async (req, res) => {
   try {
-    const room = await Room.findById(req.params.id);
+    console.log("HI reached");
+    const room = await Room.findOne({ room_id: req.params.id });
+    console.log(room);
 
     if (!room) {
       return res
