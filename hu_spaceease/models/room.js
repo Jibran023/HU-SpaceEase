@@ -21,8 +21,16 @@ const RoomSchema = new Schema({
   is_booked: { type: Boolean, required: true },
   booking: { type: BookingSchema, required: false }, // Nested booking schema
   added_by: { type: String, required: false }, // Optional field for admin tracking
-  image: { type: String, required: false }, // New field to store room image
-  description: { type: String, required: false }, // New field for room description
+  image: { type: String, required: false }, // Field to store room image
+  description: { type: String, required: false }, // Field for room description
+  request_id: { type: String, required: false }, // ID for tracking specific requests
+  requested_by: { type: String, required: false }, // User who made the request
+  status: {
+    type: String,
+    required: false,
+    enum: ["Pending", "Approved", "Rejected"],
+    default: "Pending",
+  }, // Status of the request
 });
 
 export default model("Room", RoomSchema);

@@ -29,6 +29,9 @@ router.get("/test", async (req, res) => {
         image: "hu_spaceease\\public\\images\\audi4.jpg", // Updated image path
         description:
           "A fully equipped computer science lab with all necessary tech for lectures and labs.",
+        request_id: "REQ001",
+        requested_by: "U-510", // Assigned student ID
+        status: "Pending",
       },
       {
         room_id: "LIB202",
@@ -44,6 +47,9 @@ router.get("/test", async (req, res) => {
         image: "hu_spaceease\\public\\images\\audi4.jpg", // Updated image path
         description:
           "A quiet study room with basic facilities for individual or group study sessions.",
+        request_id: "REQ002",
+        requested_by: "U-87", // Assigned student ID
+        status: "Pending",
       },
       {
         room_id: "AUD500",
@@ -67,6 +73,9 @@ router.get("/test", async (req, res) => {
         image: "hu_spaceease\\public\\images\\audi4.jpg", // Updated image path
         description:
           "A large auditorium equipped with a stage, lighting, and sound system, perfect for events and shows.",
+        request_id: "REQ003",
+        requested_by: "U-133", // Assigned student ID
+        status: "Pending",
       },
       {
         room_id: "LAB302",
@@ -136,49 +145,117 @@ router.get("/test", async (req, res) => {
     });
   }
 });
-
 router.get("/unapproved-rooms", async (req, res) => {
   try {
-    // Fetch rooms where the booking approval is pending (null)
-    const unapprovedRooms = await Room.find({ "booking.approved": null });
+    // Fetch rooms where the booking approval is pending
+    const unapprovedRooms = await Room.find({ status: "Pending" });
 
-    res.status(200).json({ success: true, rooms: unapprovedRooms });
+    // Map the fetched data to a simplified format
+    const formattedRooms = unapprovedRooms.map((room) => ({
+      id: room.room_id,
+      room_name: room.room_name || room.room_number || "N/A",
+      requester: room.booking?.booked_by_user_id || "Unknown",
+      is_booked: room.is_booked || false,
+      RoomStatus: room.status,
+    }));
+
+    res.status(200).json({ success: true, rooms: formattedRooms });
   } catch (error) {
     console.error("Error fetching unapproved rooms:", error);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 });
 
-// Approve a room
 router.put("/approve-room/:id", async (req, res) => {
+  const { admin_id, user_id, room_id } = req.body; // Admin, user IDs, and room_id from request body
+  const roomId = String(req.params.id); // Converts it to string if it's not
+
+  // Check if admin_id, user_id, and room_id are provided
+  if (!admin_id || !user_id || !room_id) {
+    return res.status(400).json({
+      success: false,
+      message: "Admin ID, user ID, and room ID are required to approve a room.",
+    });
+  }
+
   try {
-    const room = await Room.findByIdAndUpdate(
-      req.params.id,
-      {
-        "booking.approved": true,
-        "booking.approval_date": new Date().toISOString(),
-      },
-      { new: true }
-    );
-    res.status(200).json({ success: true, room });
+    // Find the room by room_id (use findOne for a single document)
+    const room = await Room.findOne({ room_id: roomId });
+    console.log(room);
+
+    if (!room) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Room not found." });
+    }
+
+    // Check if the room is already booked (if necessary)
+    if (room.is_booked) {
+      return res.status(400).json({
+        success: false,
+        message: "Room is already booked and cannot be approved again.",
+      });
+    }
+
+    // Ensure booking is defined
+    room.booking = room.booking || {}; // Ensure booking exists
+
+    // Update room booking details
+    room.booking.booked_by_user_id = user_id; // Set the user who requested the booking
+    room.booking.approved = true; // Mark the booking as approved
+    room.booking.approved_by_admin_id = admin_id; // Store the admin ID who approved it
+    room.booking.approval_date = new Date().toISOString(); // Date when it was approved
+
+    room.is_booked = true; // Mark the room as booked
+    room.status = "Approved"; // Update room status to "Approved"
+
+    // Save the updated room
+    await room.save();
+
+    // Respond with success message and updated room data
+    res.status(200).json({
+      success: true,
+      message: "Room booking approved successfully.",
+      room,
+    });
   } catch (error) {
     console.error("Error approving room:", error);
-    res.status(500).json({ success: false, message: "Internal server error" });
+    res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+    });
   }
 });
 
 // Reject a room
 router.put("/reject-room/:id", async (req, res) => {
   try {
-    const room = await Room.findByIdAndUpdate(
-      req.params.id,
-      { "booking.approved": false },
-      { new: true }
-    );
-    res.status(200).json({ success: true, room });
+    const room = await Room.findById(req.params.id);
+
+    if (!room) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Room not found." });
+    }
+
+    // Update room status to rejected
+    room.status = "Rejected";
+    room.booking = null; // Clear booking data if rejected
+    room.is_booked = false;
+
+    await room.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Room booking rejected successfully.",
+      room,
+    });
   } catch (error) {
     console.error("Error rejecting room:", error);
-    res.status(500).json({ success: false, message: "Internal server error" });
+    res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+    });
   }
 });
 
