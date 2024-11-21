@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 
+// Define the Booking Schema
 const BookingSchema = new Schema({
   booked_by_user_id: { type: String, required: false },
   date: { type: String, required: false },
@@ -10,27 +11,30 @@ const BookingSchema = new Schema({
   approval_date: { type: String, required: false, default: null },
 });
 
+// Define the Room Schema
 const RoomSchema = new Schema({
   room_id: { type: String, required: true },
   room_number: { type: String, required: true },
-  room_name: { type: String, required: false }, // Optional field
+  room_name: { type: String, required: false },
   building: { type: String, required: true },
   capacity: { type: Number, required: true },
   floor: { type: Number, required: true },
   features: { type: [String], required: true },
   is_booked: { type: Boolean, required: true },
-  booking: { type: BookingSchema, required: false }, // Nested booking schema
-  added_by: { type: String, required: false }, // Optional field for admin tracking
-  image: { type: String, required: false }, // Field to store room image
-  description: { type: String, required: false }, // Field for room description
-  request_id: { type: String, required: false }, // ID for tracking specific requests
-  requested_by: { type: String, required: false }, // User who made the request
+  // Changed this field to allow an array of bookings
+  bookings: { type: [BookingSchema], required: false }, // Array of Booking Schema
+  added_by: { type: String, required: false },
+  image: { type: String, required: false },
+  description: { type: String, required: false },
+  request_id: { type: String, required: false },
+  requested_by: { type: String, required: false },
   status: {
     type: String,
     required: false,
     enum: ["Pending", "Approved", "Rejected"],
     default: "Pending",
-  }, // Status of the request
+  },
 });
 
+// Create the Room model from the schema
 export default model("Room", RoomSchema);

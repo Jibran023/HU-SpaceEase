@@ -108,10 +108,9 @@ const RoomBooking = () => {
   const filteredRooms =
     filter === "All" ? rooms : rooms.filter((room) => room.type === filter);
 
-  const navigateToStatus = (e) => {
-    e.preventDefault();
-    navigate("/forms");
-  };
+    const navigateToStatus = (roomId) => {
+      navigate(`/forms/${roomId}`); // Pass the room ID as a URL parameter
+    };
 
   return (
     <div className="room-booking-container">
@@ -143,7 +142,9 @@ const RoomBooking = () => {
               />
             </div>
             <div className="Button-div">
-              <button className="book-button" onClick={navigateToStatus}>Book Now!</button>
+            <button className="book-button" onClick={() => navigateToStatus(room.room_id)}>
+  Book Now!
+</button>
             </div>
           </div>
         ))}

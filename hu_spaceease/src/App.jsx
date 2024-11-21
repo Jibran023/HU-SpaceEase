@@ -57,8 +57,9 @@ function App() {
             </ProtectedRoute>
           }
         />
+        {/* Update the /forms route to support dynamic segments */}
         <Route
-          path="/forms"
+          path="/forms/:id"
           element={
             <ProtectedRoute>
               <FormRoom />
